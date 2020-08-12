@@ -22,9 +22,8 @@ class ToolFactory: NSObject {
     }
     
     static func AddImage(args: [Any]) -> UIView{
-        let image = (args[0] as! UIImage).resize(size: CGSize(width: 256, height: 256))
-        let imageView = BIImageView(image: image)
-        
+        let imageView = BIImageView(image: args[0] as? UIImage)
+        imageView.frame = CGRect(x: 64, y: 96, width: 128, height: 128)
         return imageView
     }
     

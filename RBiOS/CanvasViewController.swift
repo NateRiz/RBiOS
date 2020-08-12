@@ -65,3 +65,11 @@ class CanvasViewController: UIViewController {
         print(authoringToolsView.selectedTool)
     }
 }
+
+/*
+ TODO
+ -Create view to sit on top of BITools that send touch callbacks to normal controllers
+ -dragging shouldnt snap to middle
+ -dragging shouldnt allow bitools to go above toolbar
+ -resizing should be smoother
+*/

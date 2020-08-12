@@ -10,13 +10,14 @@ import UIKit
 
 class BIImageView: UIImageView, BITool {
 
-    var touchMode = 0
-    var touchDistance: CGFloat = 0
+    var touchMode:TouchMode = .NONE
+    var initialTouchDistance: CGFloat = 0
     
     override init(image: UIImage?) {
         super.init(image: image)
         self.translatesAutoresizingMaskIntoConstraints = true
         self.isUserInteractionEnabled = true
+        self.isMultipleTouchEnabled = true
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -25,12 +26,12 @@ class BIImageView: UIImageView, BITool {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        print("####TOUHCH")
+        if self.touchMode != .NONE { return }
         if touches.count == 1{
-            self.touchMode = 1
+            self.touchMode = .DRAG
         }
         else if touches.count == 2{
-            self.touchMode = 0
+            self.touchMode = .NONE
             let touch1 = touches[touches.index(touches.startIndex, offsetBy: 0)]
             let touch2 = touches[touches.index(touches.startIndex, offsetBy: 1)]
             let loc1 = touch1.location(in: self.superview);
@@ -41,53 +42,62 @@ class BIImageView: UIImageView, BITool {
             let down = (loc1.y < loc2.y ? loc2 : loc1)
             
             if left.x <= self.frame.midX && right.x >= self.frame.midX{
-                self.touchMode = 2
-                self.touchDistance = abs(right.x-left.x)
+                self.touchMode = .HRESIZE
+                self.initialTouchDistance = abs(right.x-left.x)
             }
             else if up.y <= self.frame.midY && down.y >= self.frame.midY{
-                self.touchMode = 3
-                self.touchDistance = abs(right.y-left.y)
+                self.touchMode = .VRESIZE
+                self.initialTouchDistance = abs(right.y-left.y)
             }
         }
         else{
-            self.touchMode = 0
+            self.touchMode = .NONE
         }
         self.setSelfAsSelectedTool()
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesMoved(touches, with: event)
-        if self.touchMode == 1{
+        if self.touchMode == .DRAG{
             let touch = touches.first;
             let location = touch?.location(in: self.superview);
             if(location != nil)
             {
-                self.frame.origin = CGPoint(x: location!.x-self.frame.size.width/2, y: location!.y-self.frame.size.height/2);
+                let clampedX = min(max(0, location!.x-self.frame.size.width/2), UIScreen.main.bounds.size.width - self.frame.size.width)
+                let clampedY = min(max(0, location!.y-self.frame.size.height/2), UIScreen.main.bounds.size.height - self.frame.size.height)
+
+                self.frame.origin = CGPoint(x: clampedX, y: clampedY);
             }
         }
-        else if self.touchMode == 2{
+        else if self.touchMode == .HRESIZE{
+            if touches.count < 2 { return }
             let touch1 = touches[touches.index(touches.startIndex, offsetBy: 0)]
             let touch2 = touches[touches.index(touches.startIndex, offsetBy: 1)]
             let loc1 = touch1.location(in: self.superview);
             let loc2 = touch2.location(in: self.superview);
-            self.frame.size.width = max(16, self.frame.width + (abs(loc1.x-loc2.x) - self.touchDistance))
+            let touchDistance = abs(loc1.x-loc2.x)
+            self.frame.size.width = max(16, self.frame.size.width + touchDistance - self.initialTouchDistance)
+            //self.center = CGPoint(x: (loc1.x+loc2.x)/2, y: self.frame.origin.y)
+            self.initialTouchDistance = touchDistance
         }
-        else if self.touchMode == 3{
+            
+        else if self.touchMode == .VRESIZE{
+            if touches.count < 2 { return }
             let touch1 = touches[touches.index(touches.startIndex, offsetBy: 0)]
             let touch2 = touches[touches.index(touches.startIndex, offsetBy: 1)]
             let loc1 = touch1.location(in: self.superview);
             let loc2 = touch2.location(in: self.superview);
-            self.frame.size.height = max(16, self.frame.height + (abs(loc1.y-loc2.y) - self.touchDistance))
+            let touchDistance = abs(loc1.y-loc2.y)
+            self.frame.size.height = max(16, self.frame.size.height + touchDistance - self.initialTouchDistance)
+            //self.center = CGPoint(x: self.frame.origin.x, y: (loc1.y+loc2.y)/2)
+            self.initialTouchDistance = touchDistance
         }
         
     }
     
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?){
+        super.touchesEnded(touches, with: event)
+        self.initialTouchDistance = 0
+        self.touchMode = .NONE
     }
-    */
-
 }
