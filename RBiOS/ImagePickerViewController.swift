@@ -10,26 +10,37 @@ import UIKit
 
 class ImagePickerViewController: UIImagePickerController, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
 
+    var image: UIImage?
+    var parentView: AuthoringToolsViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.delegate = self
         // Do any additional setup after loading the view.
     }
     
+    func setParent(parentView: AuthoringToolsViewController){
+        self.parentView = parentView
+    }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        var newImage: UIImage
-        
+        image = nil
         if let possibleImage = info[.editedImage] as? UIImage {
-            newImage = possibleImage
+            image = possibleImage
         } else if let possibleImage = info[.originalImage] as? UIImage {
-            newImage = possibleImage
+            image = possibleImage
         } else {
             return
         }
         
-        // do something interesting here!
-        print(newImage.size)
-        dismiss(animated: true)
+        print("Uploading image to PBI: ", image!.size)
+        
+        self.parentView!.args.append(image as Any)
+        print("Dis")
+        self.dismiss(animated: true, completion: {
+            self.parentView!.closeView()
+        })
+
     }
     
 

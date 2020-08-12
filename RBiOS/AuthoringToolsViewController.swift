@@ -11,15 +11,17 @@ import UIKit
 enum Tool {
     case NONE
     case TEXTBOX
+    case IMAGE
 }
 
 class AuthoringToolsViewController: UIViewController {
 
     var selectedTool: Tool = Tool.NONE
-
+    var args = [Any]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        args.removeAll()
         // Do any additional setup after loading the view.
     }
     
@@ -37,6 +39,15 @@ class AuthoringToolsViewController: UIViewController {
         selectedTool = Tool.TEXTBOX
         closeView()
     }
+    
+    @IBAction func selectImage(_ sender: Any) {
+        selectedTool = Tool.IMAGE
+        let vc = ImagePickerViewController()
+        vc.setParent(parentView: self)
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    
     func resetSelectedTool() {
         selectedTool = Tool.NONE
     }

@@ -26,9 +26,9 @@ class CanvasViewController: UIViewController {
         setSelectedTool(selectedView: nil)
     }
     
-    func addSelectedToolToCanvas(tool: Tool) {
+    func addSelectedToolToCanvas(tool: Tool, args: [Any]) {
         if tool == Tool.NONE { return }
-        let createdUIElement: UIView = toolFactory.createTool(tool: tool)
+        let createdUIElement: UIView = toolFactory.createTool(tool: tool, args: args)
         canvasUIElements.append(createdUIElement)
         self.view.addSubview(createdUIElement)
     }
@@ -60,9 +60,8 @@ class CanvasViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        let selectedTool = authoringToolsView.selectedTool
-        self.addSelectedToolToCanvas(tool: selectedTool)
+        self.addSelectedToolToCanvas(tool: authoringToolsView.selectedTool, args: authoringToolsView.args)
         authoringToolsView.resetSelectedTool()
-        print(selectedTool)
+        print(authoringToolsView.selectedTool)
     }
 }

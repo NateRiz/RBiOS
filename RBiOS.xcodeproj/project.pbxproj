@@ -8,20 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		ECD16A1524DCF04F00490CF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD16A1424DCF04F00490CF7 /* AppDelegate.swift */; };
-		ECD16A1724DCF04F00490CF7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD16A1624DCF04F00490CF7 /* ViewController.swift */; };
 		ECD16A1A24DCF04F00490CF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECD16A1824DCF04F00490CF7 /* Main.storyboard */; };
 		ECD16A1C24DCF05100490CF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECD16A1B24DCF05100490CF7 /* Assets.xcassets */; };
 		ECD16A1F24DCF05100490CF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECD16A1D24DCF05100490CF7 /* LaunchScreen.storyboard */; };
 		ECD16A2A24DCF05100490CF7 /* RBiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD16A2924DCF05100490CF7 /* RBiOSTests.swift */; };
 		ECD16A3524DCF05100490CF7 /* RBiOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD16A3424DCF05100490CF7 /* RBiOSUITests.swift */; };
-		ECD16A4C24DD0C1800490CF7 /* power_bi_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD16A4B24DD0C1800490CF7 /* power_bi_logo.png */; };
 		ECD16A4E24DEFEFB00490CF7 /* CanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD16A4D24DEFEFB00490CF7 /* CanvasViewController.swift */; };
 		ECD16A5024DF257F00490CF7 /* AuthoringToolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD16A4F24DF257F00490CF7 /* AuthoringToolsViewController.swift */; };
 		ECD16A5224DF330E00490CF7 /* ToolFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD16A5124DF330E00490CF7 /* ToolFactory.swift */; };
-		ECD16A5B24DF886200490CF7 /* BITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD16A5A24DF886200490CF7 /* BITextView.swift */; };
 		ECD16A5F24DF9D9900490CF7 /* BIToolCommonUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD16A5E24DF9D9900490CF7 /* BIToolCommonUtilities.swift */; };
-		ECD16A6324E0D3B100490CF7 /* dragger_image.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD16A6224E0D3B100490CF7 /* dragger_image.png */; };
 		ECD16A6524E0F84000490CF7 /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD16A6424E0F84000490CF7 /* ImagePickerViewController.swift */; };
+		ECD16A6724E3B60600490CF7 /* BIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD16A6624E3B60600490CF7 /* BIImageView.swift */; };
+		ECD16A6A24E3B68800490CF7 /* BITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD16A6924E3B68800490CF7 /* BITextView.swift */; };
+		ECD16A7224E3BA1300490CF7 /* power_bi_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD16A7124E3BA1300490CF7 /* power_bi_logo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +43,6 @@
 /* Begin PBXFileReference section */
 		ECD16A1124DCF04F00490CF7 /* RBiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RBiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECD16A1424DCF04F00490CF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ECD16A1624DCF04F00490CF7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		ECD16A1924DCF04F00490CF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ECD16A1B24DCF05100490CF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ECD16A1E24DCF05100490CF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,14 +53,14 @@
 		ECD16A3024DCF05100490CF7 /* RBiOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RBiOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECD16A3424DCF05100490CF7 /* RBiOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RBiOSUITests.swift; sourceTree = "<group>"; };
 		ECD16A3624DCF05100490CF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ECD16A4B24DD0C1800490CF7 /* power_bi_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = power_bi_logo.png; path = ../../../Downloads/power_bi_logo.png; sourceTree = "<group>"; };
 		ECD16A4D24DEFEFB00490CF7 /* CanvasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewController.swift; sourceTree = "<group>"; };
 		ECD16A4F24DF257F00490CF7 /* AuthoringToolsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthoringToolsViewController.swift; sourceTree = "<group>"; };
 		ECD16A5124DF330E00490CF7 /* ToolFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolFactory.swift; sourceTree = "<group>"; };
-		ECD16A5A24DF886200490CF7 /* BITextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BITextView.swift; path = ../../../../.Trash/BITextView.swift; sourceTree = "<group>"; };
 		ECD16A5E24DF9D9900490CF7 /* BIToolCommonUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BIToolCommonUtilities.swift; sourceTree = "<group>"; };
-		ECD16A6224E0D3B100490CF7 /* dragger_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dragger_image.png; path = ../../../Downloads/dragger_image.png; sourceTree = "<group>"; };
 		ECD16A6424E0F84000490CF7 /* ImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerViewController.swift; sourceTree = "<group>"; };
+		ECD16A6624E3B60600490CF7 /* BIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BIImageView.swift; sourceTree = "<group>"; };
+		ECD16A6924E3B68800490CF7 /* BITextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BITextView.swift; sourceTree = "<group>"; };
+		ECD16A7124E3BA1300490CF7 /* power_bi_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = power_bi_logo.png; path = RBiOS/Resources/power_bi_logo.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,14 +111,11 @@
 		ECD16A1324DCF04F00490CF7 /* RBiOS */ = {
 			isa = PBXGroup;
 			children = (
+				ECD16A6E24E3B9E300490CF7 /* Res */,
+				ECD16A6D24E3B6F700490CF7 /* Storyboards */,
 				ECD16A5324DF527300490CF7 /* CanvasTools */,
-				ECD16A4B24DD0C1800490CF7 /* power_bi_logo.png */,
-				ECD16A6224E0D3B100490CF7 /* dragger_image.png */,
 				ECD16A1424DCF04F00490CF7 /* AppDelegate.swift */,
-				ECD16A1624DCF04F00490CF7 /* ViewController.swift */,
-				ECD16A1824DCF04F00490CF7 /* Main.storyboard */,
 				ECD16A1B24DCF05100490CF7 /* Assets.xcassets */,
-				ECD16A1D24DCF05100490CF7 /* LaunchScreen.storyboard */,
 				ECD16A2024DCF05100490CF7 /* Info.plist */,
 				ECD16A4D24DEFEFB00490CF7 /* CanvasViewController.swift */,
 				ECD16A4F24DF257F00490CF7 /* AuthoringToolsViewController.swift */,
@@ -151,10 +146,28 @@
 		ECD16A5324DF527300490CF7 /* CanvasTools */ = {
 			isa = PBXGroup;
 			children = (
-				ECD16A5A24DF886200490CF7 /* BITextView.swift */,
+				ECD16A6924E3B68800490CF7 /* BITextView.swift */,
 				ECD16A5E24DF9D9900490CF7 /* BIToolCommonUtilities.swift */,
+				ECD16A6624E3B60600490CF7 /* BIImageView.swift */,
 			);
 			path = CanvasTools;
+			sourceTree = "<group>";
+		};
+		ECD16A6D24E3B6F700490CF7 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				ECD16A1D24DCF05100490CF7 /* LaunchScreen.storyboard */,
+				ECD16A1824DCF04F00490CF7 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		ECD16A6E24E3B9E300490CF7 /* Res */ = {
+			isa = PBXGroup;
+			children = (
+				ECD16A7124E3BA1300490CF7 /* power_bi_logo.png */,
+			);
+			path = Res;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,10 +275,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECD16A1F24DCF05100490CF7 /* LaunchScreen.storyboard in Resources */,
-				ECD16A6324E0D3B100490CF7 /* dragger_image.png in Resources */,
 				ECD16A1C24DCF05100490CF7 /* Assets.xcassets in Resources */,
 				ECD16A1A24DCF04F00490CF7 /* Main.storyboard in Resources */,
-				ECD16A4C24DD0C1800490CF7 /* power_bi_logo.png in Resources */,
+				ECD16A7224E3BA1300490CF7 /* power_bi_logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,14 +302,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECD16A1724DCF04F00490CF7 /* ViewController.swift in Sources */,
-				ECD16A5B24DF886200490CF7 /* BITextView.swift in Sources */,
 				ECD16A6524E0F84000490CF7 /* ImagePickerViewController.swift in Sources */,
 				ECD16A4E24DEFEFB00490CF7 /* CanvasViewController.swift in Sources */,
 				ECD16A5F24DF9D9900490CF7 /* BIToolCommonUtilities.swift in Sources */,
 				ECD16A5024DF257F00490CF7 /* AuthoringToolsViewController.swift in Sources */,
 				ECD16A5224DF330E00490CF7 /* ToolFactory.swift in Sources */,
+				ECD16A6A24E3B68800490CF7 /* BITextView.swift in Sources */,
 				ECD16A1524DCF04F00490CF7 /* AppDelegate.swift in Sources */,
+				ECD16A6724E3B60600490CF7 /* BIImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
