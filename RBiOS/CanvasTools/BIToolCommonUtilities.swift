@@ -16,21 +16,10 @@ enum TouchMode{
 }
 
 protocol BITool{
-    func setSelfAsSelectedTool()
-    func resetSelectedTool()
 }
 
-extension BITool where Self: UIView {
-    func setSelfAsSelectedTool(){
-        (self.parentViewController as! CanvasViewController).setSelectedTool(selectedView: self)
-        self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.red.cgColor
-    }
-    
-    func resetSelectedTool(){
-        self.layer.borderWidth = 0
-    }
-    
+extension UIView {
+
     var parentViewController: UIViewController? {
         var parentResponder: UIResponder? = self
         while parentResponder != nil {

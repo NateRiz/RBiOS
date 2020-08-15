@@ -10,24 +10,26 @@ import UIKit
 
 class ToolFactory: NSObject {
 
-    let toolCreationMapper: [Tool: ([Any]) -> UIView] = [
+    let toolCreationMapper: [Tool: ([Any]) -> BIToolContainerView] = [
         Tool.TEXTBOX: AddTextBox,
         Tool.IMAGE: AddImage
     ]
     
-    static func AddTextBox(_: [Any]) -> BITextView{
-        let label: BITextView = BITextView(frame: CGRect(x: 64, y: 32, width: 64, height: 32))
+    static func AddTextBox(_: [Any]) -> BIToolContainerView{
+        let label: BITextView = BITextView(frame: CGRect(x: 0, y: 0, width: 64, height: 32))
         label.text = "Text Box"
-        return label
+        let BITool = BIToolContainerView(child: label, frame: CGRect(x: 64, y: 32, width: 64, height: 32))
+        return BITool
     }
     
-    static func AddImage(args: [Any]) -> UIView{
+    static func AddImage(args: [Any]) -> BIToolContainerView{
         let imageView = BIImageView(image: args[0] as? UIImage)
-        imageView.frame = CGRect(x: 64, y: 96, width: 128, height: 128)
-        return imageView
+        let BITool = BIToolContainerView(child: imageView, frame: CGRect(x: 64, y: 96, width: 128, height: 128))
+        imageView.frame.size = BITool.frame.size
+        return BITool
     }
     
-    func createTool(tool: Tool, args: [Any]) -> UIView{
+    func createTool(tool: Tool, args: [Any]) -> BIToolContainerView{
         return toolCreationMapper[tool]!(args) 
     }
 

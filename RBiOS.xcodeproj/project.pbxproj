@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC5CF80C24E72CDA0017353B /* BIToolContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5CF80B24E72CDA0017353B /* BIToolContainerView.swift */; };
 		ECD16A1524DCF04F00490CF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD16A1424DCF04F00490CF7 /* AppDelegate.swift */; };
 		ECD16A1A24DCF04F00490CF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECD16A1824DCF04F00490CF7 /* Main.storyboard */; };
 		ECD16A1C24DCF05100490CF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECD16A1B24DCF05100490CF7 /* Assets.xcassets */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EC5CF80B24E72CDA0017353B /* BIToolContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BIToolContainerView.swift; sourceTree = "<group>"; };
 		ECD16A1124DCF04F00490CF7 /* RBiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RBiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECD16A1424DCF04F00490CF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECD16A1924DCF04F00490CF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				ECD16A6924E3B68800490CF7 /* BITextView.swift */,
 				ECD16A5E24DF9D9900490CF7 /* BIToolCommonUtilities.swift */,
 				ECD16A6624E3B60600490CF7 /* BIImageView.swift */,
+				EC5CF80B24E72CDA0017353B /* BIToolContainerView.swift */,
 			);
 			path = CanvasTools;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				ECD16A6524E0F84000490CF7 /* ImagePickerViewController.swift in Sources */,
 				ECD16A4E24DEFEFB00490CF7 /* CanvasViewController.swift in Sources */,
 				ECD16A5F24DF9D9900490CF7 /* BIToolCommonUtilities.swift in Sources */,
+				EC5CF80C24E72CDA0017353B /* BIToolContainerView.swift in Sources */,
 				ECD16A5024DF257F00490CF7 /* AuthoringToolsViewController.swift in Sources */,
 				ECD16A5224DF330E00490CF7 /* ToolFactory.swift in Sources */,
 				ECD16A6A24E3B68800490CF7 /* BITextView.swift in Sources */,

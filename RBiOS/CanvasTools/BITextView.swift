@@ -10,81 +10,47 @@ import UIKit
 
 class BITextView: UITextView, BITool, UITextViewDelegate{
     
-    var touchMode: TouchMode = .NONE
-    var touchDistance: CGFloat = 0
-    
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: nil)
-        self.translatesAutoresizingMaskIntoConstraints = true
         self.isScrollEnabled = false
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.delegate = self
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        print(touches.count)
-        if touches.count == 1{
-            self.touchMode = .DRAG
-        }
-        else if touches.count == 2{
-            self.touchMode = .NONE
-            let touch1 = touches[touches.index(touches.startIndex, offsetBy: 0)]
-            let touch2 = touches[touches.index(touches.startIndex, offsetBy: 1)]
-            let loc1 = touch1.location(in: self.superview);
-            let loc2 = touch2.location(in: self.superview);
-            let left = (loc1.x < loc2.x ? loc1 : loc2)
-            let right = (loc1.x < loc2.x ? loc2 : loc1)
-            let up = (loc1.y < loc2.y ? loc1 : loc2)
-            let down = (loc1.y < loc2.y ? loc2 : loc1)
-            
-            if left.x <= self.frame.midX && right.x >= self.frame.midX{
-                self.touchMode = .HRESIZE
-                self.touchDistance = abs(right.x-left.x)
-            }
-            else if up.y <= self.frame.midY && down.y >= self.frame.midY{
-                self.touchMode = .VRESIZE
-                self.touchDistance = abs(right.y-left.y)
-            }
-        }
-        else{
-            self.touchMode = .NONE
-        }
-        self.setSelfAsSelectedTool()
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesMoved(touches, with: event)
-        if self.touchMode == .DRAG{
-            let touch = touches.first;
-            let location = touch?.location(in: self.superview);
-            if(location != nil)
-            {
-                self.frame.origin = CGPoint(x: location!.x-self.frame.size.width/2, y: location!.y-self.frame.size.height/2);
-            }
-        }
-        else if self.touchMode == .HRESIZE{
-            let touch1 = touches[touches.index(touches.startIndex, offsetBy: 0)]
-            let touch2 = touches[touches.index(touches.startIndex, offsetBy: 1)]
-            let loc1 = touch1.location(in: self.superview);
-            let loc2 = touch2.location(in: self.superview);
-            self.frame.size.width = max(16, self.frame.width + (abs(loc1.x-loc2.x) - self.touchDistance))
-        }
-        else if self.touchMode == .VRESIZE{
-            let touch1 = touches[touches.index(touches.startIndex, offsetBy: 0)]
-            let touch2 = touches[touches.index(touches.startIndex, offsetBy: 1)]
-            let loc1 = touch1.location(in: self.superview);
-            let loc2 = touch2.location(in: self.superview);
-            self.frame.size.height = max(16, self.frame.height + (abs(loc1.y-loc2.y) - self.touchDistance))
-        }
-        
-    }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     func textViewDidChange(_ textView: UITextView) {
-        self.sizeToFit()
+        let fixedWidth = frame.size.width
+        let newSize = sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+        print(newSize.width, fixedWidth)
+        frame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
+        print(super.frame.size, frame.size,"\n")
+        self.superview!.frame.size = frame.size
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        next?.touchesBegan(touches, with: event)
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?){
+        super.touchesMoved(touches, with: event)
+        next?.touchesMoved(touches, with: event)
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?){
+        super.touchesEnded(touches, with: event)
+        next?.touchesEnded(touches, with: event)
+    }
+    
+    override func addGestureRecognizer(_ gestureRecognizer: UIGestureRecognizer) {
+        //Prevent long press to show the magnifying glass
+        if gestureRecognizer is UILongPressGestureRecognizer {
+            gestureRecognizer.isEnabled = false
+        }
+        super.addGestureRecognizer(gestureRecognizer)
     }
     
 

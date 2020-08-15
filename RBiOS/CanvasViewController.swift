@@ -11,14 +11,20 @@ import UIKit
 class CanvasViewController: UIViewController {
 
 
-    var canvasUIElements = [UIView]()
-    var selectedView: UIView?
+    var canvasUIElements = [BIToolContainerView]()
+    var selectedView: BIToolContainerView?
     let toolFactory: ToolFactory = ToolFactory()
     var authoringToolsView = AuthoringToolsViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         authoringToolsView = self.storyboard?.instantiateViewController(withIdentifier: "AuthoringToolsVC") as! AuthoringToolsViewController
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -28,19 +34,19 @@ class CanvasViewController: UIViewController {
     
     func addSelectedToolToCanvas(tool: Tool, args: [Any]) {
         if tool == Tool.NONE { return }
-        let createdUIElement: UIView = toolFactory.createTool(tool: tool, args: args)
+        let createdUIElement: BIToolContainerView = toolFactory.createTool(tool: tool, args: args)
         canvasUIElements.append(createdUIElement)
         self.view.addSubview(createdUIElement)
     }
     
-    func setSelectedTool(selectedView: UIView?){
+    func setSelectedTool(selectedView: BIToolContainerView?){
         if let selectedUI = selectedView{
             self.selectedView = selectedUI
         }
         
         for ui in canvasUIElements{
             if selectedView == nil || ui != selectedView{
-                (ui as! BITool).resetSelectedTool()
+                ui.resetSelectedTool()
             }
         }
     }
