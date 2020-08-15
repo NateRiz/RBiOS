@@ -24,9 +24,7 @@ class BITextView: UITextView, BITool, UITextViewDelegate{
     func textViewDidChange(_ textView: UITextView) {
         let fixedWidth = frame.size.width
         let newSize = sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
-        print(newSize.width, fixedWidth)
         frame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
-        print(super.frame.size, frame.size,"\n")
         self.superview!.frame.size = frame.size
     }
     

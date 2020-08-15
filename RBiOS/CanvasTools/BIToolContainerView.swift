@@ -13,6 +13,8 @@ class BIToolContainerView: UIView {
     var touchMode:TouchMode = .NONE
     var initialTouchDistance: CGFloat = 0
     var childView: UIView?
+    var offsetX:CGFloat = 0
+    var offsetY:CGFloat = 0
     
     init(child: UIView, frame: CGRect) {
         super.init(frame: frame)
@@ -31,6 +33,9 @@ class BIToolContainerView: UIView {
         super.touchesBegan(touches, with: event)
         if self.touchMode != .NONE { return }
         if touches.count == 1{
+            let loc = touches.first!.location(in: self.superview)
+            offsetX = loc.x - self.frame.minX
+            offsetY = loc.y - self.frame.minY
             self.touchMode = .DRAG
         }
         else if touches.count == 2{
@@ -66,8 +71,8 @@ class BIToolContainerView: UIView {
             let location = touch?.location(in: self.superview);
             if(location != nil)
             {
-                let clampedX = min(max(0, location!.x-self.frame.size.width/2), UIScreen.main.bounds.size.width - self.frame.size.width)
-                let clampedY = min(max(0, location!.y-self.frame.size.height/2), UIScreen.main.bounds.size.height - self.frame.size.height)
+                let clampedX = min(max(0, location!.x - offsetX), UIScreen.main.bounds.size.width - self.frame.size.width)
+                let clampedY = min(max(0, location!.y - offsetY), UIScreen.main.bounds.size.height - self.frame.size.height)
                 self.frame.origin = CGPoint(x: clampedX, y: clampedY);
             }
         }
