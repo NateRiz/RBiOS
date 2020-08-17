@@ -15,6 +15,8 @@ class CanvasViewController: UIViewController {
     var selectedView: BIToolContainerView?
     let toolFactory: ToolFactory = ToolFactory()
     var authoringToolsView = AuthoringToolsViewController()
+    var rdlExporter = RDLExporter()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +66,11 @@ class CanvasViewController: UIViewController {
         self.present(authoringToolsView, animated: true, completion: nil)
     }
     
+    @IBAction func Export(_ sender: Any) {
+        rdlExporter.generate(ui: canvasUIElements)
+    }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         
         self.addSelectedToolToCanvas(tool: authoringToolsView.selectedTool, args: authoringToolsView.args)
@@ -72,10 +79,14 @@ class CanvasViewController: UIViewController {
     }
 }
 
+
+
 /*
  TODO
- -Create view to sit on top of BITools that send touch callbacks to normal controllers
- -dragging shouldnt snap to middle
- -dragging shouldnt allow bitools to go above toolbar
- -resizing should be smoother
+ - dragging shouldnt allow bitools to go above toolbar
+ - login
+ - datasets
+ - menu on select ( delete, font, size, etc)
+ - export as rdl
+ - ruler grid lines
 */

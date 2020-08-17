@@ -70,11 +70,18 @@
                                 <rect key="frame" x="0.0" y="24" width="1366" height="50"/>
                                 <items>
                                     <navigationItem title="Editor" id="giW-4F-npj">
-                                        <barButtonItem key="rightBarButtonItem" title="+" id="a45-bO-ADj">
-                                            <connections>
-                                                <action selector="openAuthoringTools:" destination="hDk-O6-TIE" id="Lai-Jf-XLe"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        <rightBarButtonItems>
+                                            <barButtonItem systemItem="add" id="a45-bO-ADj">
+                                                <connections>
+                                                    <action selector="openAuthoringTools:" destination="hDk-O6-TIE" id="Lai-Jf-XLe"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Item" id="qK1-Pk-2Th">
+                                                <connections>
+                                                    <action selector="Export:" destination="hDk-O6-TIE" id="cWd-bk-q4s"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
                             </navigationBar>

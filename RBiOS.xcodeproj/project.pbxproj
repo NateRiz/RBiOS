@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		EC5CF80C24E72CDA0017353B /* BIToolContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5CF80B24E72CDA0017353B /* BIToolContainerView.swift */; };
+		EC5CF80E24E90D690017353B /* trash.png in Resources */ = {isa = PBXBuildFile; fileRef = EC5CF80D24E90D690017353B /* trash.png */; };
+		EC5CF81224E9306B0017353B /* RDLExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5CF81124E9306B0017353B /* RDLExporter.swift */; };
 		ECD16A1524DCF04F00490CF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD16A1424DCF04F00490CF7 /* AppDelegate.swift */; };
 		ECD16A1A24DCF04F00490CF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECD16A1824DCF04F00490CF7 /* Main.storyboard */; };
 		ECD16A1C24DCF05100490CF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECD16A1B24DCF05100490CF7 /* Assets.xcassets */; };
@@ -43,6 +45,8 @@
 
 /* Begin PBXFileReference section */
 		EC5CF80B24E72CDA0017353B /* BIToolContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BIToolContainerView.swift; sourceTree = "<group>"; };
+		EC5CF80D24E90D690017353B /* trash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trash.png; path = "../../../../Downloads/delete-black-ios/baseline_delete_black_48pt.xcassets/baseline_delete_black_48pt.imageset/trash.png"; sourceTree = "<group>"; };
+		EC5CF81124E9306B0017353B /* RDLExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDLExporter.swift; sourceTree = "<group>"; };
 		ECD16A1124DCF04F00490CF7 /* RBiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RBiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECD16A1424DCF04F00490CF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECD16A1924DCF04F00490CF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -123,6 +127,7 @@
 				ECD16A4F24DF257F00490CF7 /* AuthoringToolsViewController.swift */,
 				ECD16A5124DF330E00490CF7 /* ToolFactory.swift */,
 				ECD16A6424E0F84000490CF7 /* ImagePickerViewController.swift */,
+				EC5CF81124E9306B0017353B /* RDLExporter.swift */,
 			);
 			path = RBiOS;
 			sourceTree = "<group>";
@@ -168,6 +173,7 @@
 		ECD16A6E24E3B9E300490CF7 /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				EC5CF80D24E90D690017353B /* trash.png */,
 				ECD16A7124E3BA1300490CF7 /* power_bi_logo.png */,
 			);
 			path = Res;
@@ -278,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECD16A1F24DCF05100490CF7 /* LaunchScreen.storyboard in Resources */,
+				EC5CF80E24E90D690017353B /* trash.png in Resources */,
 				ECD16A1C24DCF05100490CF7 /* Assets.xcassets in Resources */,
 				ECD16A1A24DCF04F00490CF7 /* Main.storyboard in Resources */,
 				ECD16A7224E3BA1300490CF7 /* power_bi_logo.png in Resources */,
@@ -314,6 +321,7 @@
 				ECD16A6A24E3B68800490CF7 /* BITextView.swift in Sources */,
 				ECD16A1524DCF04F00490CF7 /* AppDelegate.swift in Sources */,
 				ECD16A6724E3B60600490CF7 /* BIImageView.swift in Sources */,
+				EC5CF81224E9306B0017353B /* RDLExporter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
