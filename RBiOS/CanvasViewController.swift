@@ -17,20 +17,21 @@ class CanvasViewController: UIViewController {
     var toolFactory: ToolFactory = ToolFactory()
     var authoringToolsView = AuthoringToolsViewController()
     var rdlExporter = RDLExporter()
-    let canvasBorderView = CanvasBorderView()
+    let drawableCanvasView = DrawableCanvasView()
+    var canvasBorderView = CanvasBorderView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         authoringToolsView = self.storyboard?.instantiateViewController(withIdentifier: "AuthoringToolsVC") as! AuthoringToolsViewController
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         self.view.addGestureRecognizer(tapGesture)
+        self.canvasBorderView = CanvasBorderView(canvas: drawableCanvasView)
         self.view.addSubview(canvasBorderView)
         self.canvasBorderView.translatesAutoresizingMaskIntoConstraints = false
         canvasBorderView.topAnchor.constraint(equalTo: self.navBar.bottomAnchor).isActive = true
         canvasBorderView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         canvasBorderView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         canvasBorderView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        ToolFactory.SetCanvasBorderView(view: canvasBorderView)
     }
     
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
@@ -46,7 +47,7 @@ class CanvasViewController: UIViewController {
         if tool == Tool.NONE { return }
         let createdUIElement: BIToolContainerView = toolFactory.createTool(tool: tool, args: args)
         canvasUIElements.append(createdUIElement)
-        self.canvasBorderView.addSubview(createdUIElement)
+        self.drawableCanvasView.addSubview(createdUIElement)
     }
     
     func setSelectedTool(selectedView: BIToolContainerView?){

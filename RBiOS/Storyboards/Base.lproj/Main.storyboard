@@ -76,7 +76,7 @@
                                                     <action selector="openAuthoringTools:" destination="hDk-O6-TIE" id="Lai-Jf-XLe"/>
                                                 </connections>
                                             </barButtonItem>
-                                            <barButtonItem title="Item" id="qK1-Pk-2Th">
+                                            <barButtonItem title="Export" id="qK1-Pk-2Th">
                                                 <connections>
                                                     <action selector="Export:" destination="hDk-O6-TIE" id="cWd-bk-q4s"/>
                                                 </connections>

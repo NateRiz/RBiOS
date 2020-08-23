@@ -13,14 +13,12 @@ class BIToolContainerView: UIView {
     var touchMode:TouchMode = .NONE
     var initialTouchDistance: CGFloat = 0
     var childView: UIView?
-    var parentView: UIView?
     var offsetX:CGFloat = 0
     var offsetY:CGFloat = 0
     
-    init(child: UIView, parent: UIView, frame: CGRect) {
+    init(child: UIView, frame: CGRect) {
         super.init(frame: frame)
         childView = child
-        parentView = parent
         addSubview(childView!)
         self.translatesAutoresizingMaskIntoConstraints = true
         self.isUserInteractionEnabled = true
@@ -73,9 +71,8 @@ class BIToolContainerView: UIView {
             let location = touch?.location(in: self.superview);
             if(location != nil)
             {
-                let clampedX = min(max(0, location!.x - offsetX), parentView!.bounds.size.width - self.frame.size.width)
-                let clampedY = min(max(0, location!.y - offsetY), parentView!.bounds.size.height - self.frame.size.height)
-                print("w\(parentView!.bounds.size.width) h\(parentView!.bounds.size.height) &\(location!.y-offsetY), \(parentView!.bounds.size.height - self.frame.size.height), \(self.frame.size.height)")
+                let clampedX = min(max(0, location!.x - offsetX), self.superview!.bounds.size.width - self.frame.size.width)
+                let clampedY = min(max(0, location!.y - offsetY), self.superview!.bounds.size.height - self.frame.size.height)
                 self.frame.origin = CGPoint(x: clampedX, y: clampedY);
             }
         }
@@ -88,7 +85,6 @@ class BIToolContainerView: UIView {
             let touchDistance = abs(loc1.x-loc2.x)
             self.frame.size.width = max(16, self.frame.size.width + touchDistance - self.initialTouchDistance)
             self.childView!.frame.size.width = self.frame.size.width
-            //self.center = CGPoint(x: (loc1.x+loc2.x)/2, y: self.frame.origin.y)
             self.initialTouchDistance = touchDistance
         }
             
@@ -100,7 +96,6 @@ class BIToolContainerView: UIView {
             let loc2 = touch2.location(in: self.superview);
             let touchDistance = abs(loc1.y-loc2.y)
             self.frame.size.height = max(16, self.frame.size.height + touchDistance - self.initialTouchDistance)
-            //self.center = CGPoint(x: self.frame.origin.x, y: (loc1.y+loc2.y)/2)
             self.childView!.frame.size.height = self.frame.size.height
 
             self.initialTouchDistance = touchDistance

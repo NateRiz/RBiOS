@@ -11,14 +11,26 @@ import UIScreenExtension
 
 // For drawing the ruler
 // Contains main canvas
+
 class CanvasBorderView: UIView {
 
     var verticalLinePositions = [CGFloat]()
     var horizontalLinePositions = [CGFloat]()
     var measurementLabels = [UILabel]()
+    var drawableCanvasView: DrawableCanvasView?
     
-    init(){
+    init(canvas: DrawableCanvasView? = nil){
         super.init(frame: CGRect())
+        guard let dcv = canvas else {return}
+        self.addSubview(dcv)
+        drawableCanvasView = dcv
+        drawableCanvasView!.translatesAutoresizingMaskIntoConstraints = false
+        drawableCanvasView!.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
+        drawableCanvasView!.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        drawableCanvasView!.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
+        drawableCanvasView!.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        drawableCanvasView!.layer.borderWidth = 1
+        drawableCanvasView!.layer.borderColor = UIColor.lightGray.cgColor
         self.backgroundColor = .white
     }
     
@@ -47,13 +59,13 @@ class CanvasBorderView: UIView {
         
         for itr in stride(from: 1.0, to: ticksPerScreen, by: 1.0){
             let x = itr * pixelsPerTick
-            var height:CGFloat = 16
+            var height:CGFloat = 8
             if Int(itr) % 4 == 0{
-                height = 32
+                height = 16
                 horizontalLinePositions.append(x)
             }
             else if Int(itr) % 2 == 0{
-                height = 24
+                height = 12
             }
             context.move(to: CGPoint(x: x, y: 0))
             context.addLine(to: CGPoint(x: x, y: height))
@@ -63,13 +75,13 @@ class CanvasBorderView: UIView {
         
         for itr in stride(from: 1.0, to: ticksPerScreen, by: 1.0){
             let y = itr * pixelsPerTick
-            var width:CGFloat = 16
+            var width:CGFloat = 8
             if Int(itr) % 4 == 0{
-                width = 32
+                width = 16
                 verticalLinePositions.append(y)
             }
             else if Int(itr) % 2 == 0{
-                width = 24
+                width = 12
             }
             context.move(to: CGPoint(x: 0, y: y))
             context.addLine(to: CGPoint(x: width, y: y))
@@ -84,9 +96,11 @@ class CanvasBorderView: UIView {
             measurementLabels.removeLast()
         }
         
+        let buffer:CGFloat = 2.0
+        
         for (i, x) in horizontalLinePositions.enumerated(){
             let fontSize:CGFloat = 14.0
-            let label = UILabel(frame: CGRect(x: x - fontSize, y: 16, width: 16, height: 16))
+            let label = UILabel(frame: CGRect(x: x - fontSize, y: buffer, width: 16, height: 16))
             label.text = "\(i+1)"
             label.font = UIFont(name: label.font.fontName, size: fontSize)
             label.textColor = UIColor.lightGray
@@ -94,10 +108,9 @@ class CanvasBorderView: UIView {
             measurementLabels.append(label)
         }
         
-        let buffer:CGFloat = 2.0
         for (i, y) in verticalLinePositions.enumerated(){
             let fontSize:CGFloat = 14.0
-            let label = UILabel(frame: CGRect(x: 16, y: y - fontSize - buffer, width: 16, height: 16))
+            let label = UILabel(frame: CGRect(x: buffer, y: y - fontSize - buffer, width: 16, height: 16))
             label.text = "\(i+1)"
             label.font = UIFont(name: label.font.fontName, size: fontSize)
             label.textColor = UIColor.lightGray
