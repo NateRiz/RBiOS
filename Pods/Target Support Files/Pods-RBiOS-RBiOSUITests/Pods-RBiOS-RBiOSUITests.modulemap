@@ -1,0 +1,6 @@
+framework module Pods_RBiOS_RBiOSUITests {
+  umbrella header "Pods-RBiOS-RBiOSUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -10,19 +10,27 @@ import UIKit
 
 class CanvasViewController: UIViewController {
 
-
+    @IBOutlet weak var navBar: UINavigationBar!
+    
     var canvasUIElements = [BIToolContainerView]()
     var selectedView: BIToolContainerView?
-    let toolFactory: ToolFactory = ToolFactory()
+    var toolFactory: ToolFactory = ToolFactory()
     var authoringToolsView = AuthoringToolsViewController()
     var rdlExporter = RDLExporter()
-
+    let canvasBorderView = CanvasBorderView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         authoringToolsView = self.storyboard?.instantiateViewController(withIdentifier: "AuthoringToolsVC") as! AuthoringToolsViewController
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         self.view.addGestureRecognizer(tapGesture)
+        self.view.addSubview(canvasBorderView)
+        self.canvasBorderView.translatesAutoresizingMaskIntoConstraints = false
+        canvasBorderView.topAnchor.constraint(equalTo: self.navBar.bottomAnchor).isActive = true
+        canvasBorderView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        canvasBorderView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        canvasBorderView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        ToolFactory.SetCanvasBorderView(view: canvasBorderView)
     }
     
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
@@ -38,7 +46,7 @@ class CanvasViewController: UIViewController {
         if tool == Tool.NONE { return }
         let createdUIElement: BIToolContainerView = toolFactory.createTool(tool: tool, args: args)
         canvasUIElements.append(createdUIElement)
-        self.view.addSubview(createdUIElement)
+        self.canvasBorderView.addSubview(createdUIElement)
     }
     
     func setSelectedTool(selectedView: BIToolContainerView?){
@@ -77,6 +85,7 @@ class CanvasViewController: UIViewController {
         authoringToolsView.resetSelectedTool()
         print(authoringToolsView.selectedTool)
     }
+    
 }
 
 
@@ -87,6 +96,7 @@ class CanvasViewController: UIViewController {
  - login
  - datasets
  - menu on select ( delete, font, size, etc)
- - export as rdl
+ - export rdl to file
  - ruler grid lines
 */
+

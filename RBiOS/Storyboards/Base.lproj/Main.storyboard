@@ -94,6 +94,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ynL-fz-yKX"/>
                     </view>
+                    <connections>
+                        <outlet property="navBar" destination="E69-ea-wnX" id="wwF-LP-1Ee"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1F5-Nz-mgl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

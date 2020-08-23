@@ -13,12 +13,14 @@ class BIToolContainerView: UIView {
     var touchMode:TouchMode = .NONE
     var initialTouchDistance: CGFloat = 0
     var childView: UIView?
+    var parentView: UIView?
     var offsetX:CGFloat = 0
     var offsetY:CGFloat = 0
     
-    init(child: UIView, frame: CGRect) {
+    init(child: UIView, parent: UIView, frame: CGRect) {
         super.init(frame: frame)
         childView = child
+        parentView = parent
         addSubview(childView!)
         self.translatesAutoresizingMaskIntoConstraints = true
         self.isUserInteractionEnabled = true
@@ -71,8 +73,9 @@ class BIToolContainerView: UIView {
             let location = touch?.location(in: self.superview);
             if(location != nil)
             {
-                let clampedX = min(max(0, location!.x - offsetX), UIScreen.main.bounds.size.width - self.frame.size.width)
-                let clampedY = min(max(0, location!.y - offsetY), UIScreen.main.bounds.size.height - self.frame.size.height)
+                let clampedX = min(max(0, location!.x - offsetX), parentView!.bounds.size.width - self.frame.size.width)
+                let clampedY = min(max(0, location!.y - offsetY), parentView!.bounds.size.height - self.frame.size.height)
+                print("w\(parentView!.bounds.size.width) h\(parentView!.bounds.size.height) &\(location!.y-offsetY), \(parentView!.bounds.size.height - self.frame.size.height), \(self.frame.size.height)")
                 self.frame.origin = CGPoint(x: clampedX, y: clampedY);
             }
         }

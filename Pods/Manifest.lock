@@ -1,0 +1,21 @@
+PODS:
+  - UIScreenExtension (0.0.7)
+
+DEPENDENCIES:
+  - UIScreenExtension (from `https://github.com/marchv/UIScreenExtension`)
+
+EXTERNAL SOURCES:
+  UIScreenExtension:
+    :git: https://github.com/marchv/UIScreenExtension
+
+CHECKOUT OPTIONS:
+  UIScreenExtension:
+    :commit: a195be2327a2131ba04fa644b575e18bdc2f8e14
+    :git: https://github.com/marchv/UIScreenExtension
+
+SPEC CHECKSUMS:
+  UIScreenExtension: d96b7ab20679afe53992ea07aeea84774cd4a116
+
+PODFILE CHECKSUM: 90e19b765c6bdca93ede063c95c2190b291499cc
+
+COCOAPODS: 1.9.3

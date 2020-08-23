@@ -49,10 +49,10 @@ class RDLExporter: NSObject {
         <Paragraphs>\n
         """)
         let biTextView = view.childView as! BITextView
-        let left = view.frame.origin.x / 100
-        let top = view.frame.origin.y / 100
-        let width = view.frame.width / 100
-        let height = view.frame.height / 100
+        let left = view.frame.origin.x / UIScreen.pointsPerInch!
+        let top = view.frame.origin.y / UIScreen.pointsPerInch!
+        let width = view.frame.width / UIScreen.pointsPerInch!
+        let height = view.frame.height / UIScreen.pointsPerInch!
         print(left, top)
         let lines = biTextView.text.components(separatedBy: "\n")
         for line in lines { _writeBITextViewSingleLine(str: line)}
