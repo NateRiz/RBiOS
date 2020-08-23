@@ -9,9 +9,13 @@
 import UIKit
 import UIScreenExtension
 
-
+// For drawing the ruler
+// Contains main canvas
 class CanvasBorderView: UIView {
 
+    var verticalLinePositions = [CGFloat]()
+    var horizontalLinePositions = [CGFloat]()
+    var measurementLabels = [UILabel]()
     
     init(){
         super.init(frame: CGRect())
@@ -28,10 +32,14 @@ class CanvasBorderView: UIView {
         }
         
         drawRuler(context: context)
+        updateMeasurementLabels()
     }
 
     public func drawRuler(context: CGContext){
         context.setStrokeColor(UIColor.lightGray.cgColor)
+        
+        horizontalLinePositions.removeAll()
+        verticalLinePositions.removeAll()
         
         let ticksPerInch: CGFloat = 4
         let pixelsPerTick = UIScreen.pointsPerInch! / ticksPerInch
@@ -42,6 +50,7 @@ class CanvasBorderView: UIView {
             var height:CGFloat = 16
             if Int(itr) % 4 == 0{
                 height = 32
+                horizontalLinePositions.append(x)
             }
             else if Int(itr) % 2 == 0{
                 height = 24
@@ -57,6 +66,7 @@ class CanvasBorderView: UIView {
             var width:CGFloat = 16
             if Int(itr) % 4 == 0{
                 width = 32
+                verticalLinePositions.append(y)
             }
             else if Int(itr) % 2 == 0{
                 width = 24
@@ -66,6 +76,34 @@ class CanvasBorderView: UIView {
         }
         
         context.strokePath()
-        
     }
+    
+    func updateMeasurementLabels(){
+        while(!measurementLabels.isEmpty){
+            measurementLabels.last?.removeFromSuperview()
+            measurementLabels.removeLast()
+        }
+        
+        for (i, x) in horizontalLinePositions.enumerated(){
+            let fontSize:CGFloat = 14.0
+            let label = UILabel(frame: CGRect(x: x - fontSize, y: 16, width: 16, height: 16))
+            label.text = "\(i+1)"
+            label.font = UIFont(name: label.font.fontName, size: fontSize)
+            label.textColor = UIColor.lightGray
+            addSubview(label)
+            measurementLabels.append(label)
+        }
+        
+        let buffer:CGFloat = 2.0
+        for (i, y) in verticalLinePositions.enumerated(){
+            let fontSize:CGFloat = 14.0
+            let label = UILabel(frame: CGRect(x: 16, y: y - fontSize - buffer, width: 16, height: 16))
+            label.text = "\(i+1)"
+            label.font = UIFont(name: label.font.fontName, size: fontSize)
+            label.textColor = UIColor.lightGray
+            addSubview(label)
+            measurementLabels.append(label)
+        }
+    }
+    
 }
