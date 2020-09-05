@@ -30,16 +30,65 @@ class RDLExporter: NSObject {
     }
     
     func _writeFooter(){
-        rdl.append(contentsOf: footer)
+        rdl.append(contentsOf: footer1)
+        
+        
+        for (i, elem) in ui.enumerated(){
+            if elem.childView is BIImageView{ _embedBIImageView(view: elem, idx: i)}
+        }
+        
+        rdl.append(contentsOf: footer2)
     }
     
     func _writeBody(){
         for (i, elem) in ui.enumerated(){
             if elem.childView is BITextView{ _writeBITextView(view: elem, idx: i) }
+            else if elem.childView is BIImageView{ _writeBIImageView(view: elem, idx: i)}
         }
     }
     
-    func _writeBITextView(view: BIToolContainerView, idx: Int){
+    func _writeBIImageView(view: BIToolContainerView, idx: Int) {
+        let left = view.frame.origin.x / UIScreen.pointsPerInch!
+        let top = view.frame.origin.y / UIScreen.pointsPerInch!
+        let width = view.frame.width / UIScreen.pointsPerInch!
+        let height = view.frame.height / UIScreen.pointsPerInch!
+        rdl.append(contentsOf:
+            """
+            <Image Name="Image\(idx)">
+            <Source>Embedded</Source>
+            <Value>Image\(idx)</Value>
+            <Sizing>FitProportional</Sizing>
+            <Top>\(top)in</Top>
+            <Left>\(left)in</Left>
+            <Height>\(height)in</Height>
+            <Width>\(width)in</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+            <Border>
+            <Style>None</Style>
+            </Border>
+            </Style>
+            </Image>\n
+            """)
+    }
+    
+    func _embedBIImageView(view: BIToolContainerView, idx: Int) {
+        let biImageView = view.childView as! BIImageView
+        let imageData:Data = biImageView.image!.pngData()!
+        let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+
+        rdl.append(contentsOf: // TODO: Take embededimageS out of this. only allows one image.
+        """
+        <EmbeddedImages>
+        <EmbeddedImage Name="Image\(idx)">
+        <MIMEType>image/\(imageData.fileExtension)</MIMEType>
+        <ImageData>\(strBase64)</ImageData>
+        </EmbeddedImage>
+        </EmbeddedImages>\n
+        """)
+    }
+    
+    func _writeBITextView(view: BIToolContainerView, idx: Int) {
         rdl.append(contentsOf:
         """
         <Textbox Name=\"Textbox\(idx)\">
@@ -53,7 +102,6 @@ class RDLExporter: NSObject {
         let top = view.frame.origin.y / UIScreen.pointsPerInch!
         let width = view.frame.width / UIScreen.pointsPerInch!
         let height = view.frame.height / UIScreen.pointsPerInch!
-        print(left, top)
         let lines = biTextView.text.components(separatedBy: "\n")
         for line in lines { _writeBITextViewSingleLine(str: line)}
         rdl.append(contentsOf:
@@ -61,8 +109,8 @@ class RDLExporter: NSObject {
         </Paragraphs>
         <Top>\(top)in</Top>
         <Left>\(left)in</Left>
-        <Height>\(width)in</Height>
-        <Width>\(height)in</Width>
+        <Height>\(height)in</Height>
+        <Width>\(width)in</Width>
         <ZIndex>1</ZIndex>
         <Style>
         <Border>
@@ -84,7 +132,7 @@ class RDLExporter: NSObject {
         <Paragraph>
         <TextRuns>
         <TextRun>
-            <Value>\((str == "" ? " " : str))</Value>
+        <Value>\((str == "" ? " " : str))</Value>
         <Style />
         </TextRun>
         </TextRuns>
@@ -109,7 +157,7 @@ class RDLExporter: NSObject {
     <ReportItems>\n
     """
     
-    let footer =
+    let footer1 =
     """
     </ReportItems>
     <Height>2.25in</Height>
@@ -144,7 +192,11 @@ class RDLExporter: NSObject {
     <NumberOfColumns>4</NumberOfColumns>
     <NumberOfRows>2</NumberOfRows>
     </GridLayoutDefinition>
-    </ReportParametersLayout>
-    </Report>\n
+    </ReportParametersLayout>\n
     """
 }
+
+let footer2 =
+    """
+    </Report>\n
+    """
