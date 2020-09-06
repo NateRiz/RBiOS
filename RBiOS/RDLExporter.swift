@@ -31,12 +31,7 @@ class RDLExporter: NSObject {
     
     func _writeFooter(){
         rdl.append(contentsOf: footer1)
-        
-        
-        for (i, elem) in ui.enumerated(){
-            if elem.childView is BIImageView{ _embedBIImageView(view: elem, idx: i)}
-        }
-        
+        _embedBIImageView()
         rdl.append(contentsOf: footer2)
     }
     
@@ -72,23 +67,42 @@ class RDLExporter: NSObject {
             """)
     }
     
-    func _embedBIImageView(view: BIToolContainerView, idx: Int) {
+    func _embedBIImageView(){
+        var doesReportContainImages = false
+        for elem in ui {
+            if elem.childView is BIImageView{
+                doesReportContainImages = true
+                break
+            }
+        }
+        
+        if (!doesReportContainImages) { return }
+        
+        rdl.append(contentsOf: "<EmbeddedImages>\n")
+        for (i, elem) in ui.enumerated(){
+            if elem.childView is BIImageView{ _embedBIImageViewHelper(view: elem, idx: i)}
+        }
+        rdl.append(contentsOf: "</EmbeddedImages>\n")
+        
+    }
+    
+    
+    func _embedBIImageViewHelper(view: BIToolContainerView, idx: Int) {
         let biImageView = view.childView as! BIImageView
         let imageData:Data = biImageView.image!.pngData()!
         let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
 
         rdl.append(contentsOf: // TODO: Take embededimageS out of this. only allows one image.
         """
-        <EmbeddedImages>
         <EmbeddedImage Name="Image\(idx)">
         <MIMEType>image/\(imageData.fileExtension)</MIMEType>
         <ImageData>\(strBase64)</ImageData>
-        </EmbeddedImage>
-        </EmbeddedImages>\n
+        </EmbeddedImage>\n
         """)
     }
     
     func _writeBITextView(view: BIToolContainerView, idx: Int) {
+        let buffer:CGFloat = 0.15
         rdl.append(contentsOf:
         """
         <Textbox Name=\"Textbox\(idx)\">
@@ -110,7 +124,7 @@ class RDLExporter: NSObject {
         <Top>\(top)in</Top>
         <Left>\(left)in</Left>
         <Height>\(height)in</Height>
-        <Width>\(width)in</Width>
+        <Width>\(width + buffer)in</Width>
         <ZIndex>1</ZIndex>
         <Style>
         <Border>

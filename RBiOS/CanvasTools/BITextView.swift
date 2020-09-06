@@ -14,6 +14,7 @@ class BITextView: UITextView, BITool, UITextViewDelegate{
         super.init(frame: frame, textContainer: nil)
         self.isScrollEnabled = false
         self.translatesAutoresizingMaskIntoConstraints = false
+        self.font = UIFont(name: "Arial", size: 10)
         self.delegate = self
     }
 
