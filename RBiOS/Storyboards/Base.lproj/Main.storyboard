@@ -89,7 +89,7 @@
                                 <rect key="frame" x="1166" y="74" width="200" height="950"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FEx-cz-eRq">
-                                        <rect key="frame" x="16" y="16" width="168" height="253"/>
+                                        <rect key="frame" x="16" y="16" width="168" height="316"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="{Type} Properties" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08H-hI-82s">
                                                 <rect key="frame" x="0.0" y="0.0" width="168" height="16"/>
@@ -179,12 +179,73 @@
                                                     </textField>
                                                 </subviews>
                                             </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wri-x9-d8u" userLabel="FontBuffer">
+                                                <rect key="frame" x="0.0" y="222" width="168" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Font" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w0D-0D-aQ4" userLabel="Font">
+                                                <rect key="frame" x="0.0" y="239" width="168" height="16"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="yeR-2z-CZ1" userLabel="FontStack">
+                                                <rect key="frame" x="0.0" y="255" width="168" height="30"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="xH8-Ce-8oU" userLabel="FontSize">
+                                                        <rect key="frame" x="0.0" y="0.0" width="31" height="30"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8NX-kh-Msu">
+                                                        <rect key="frame" x="46" y="0.0" width="30.5" height="30"/>
+                                                        <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="14"/>
+                                                        <state key="normal" title="B">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="setTextBold:" destination="mF1-TU-4ib" eventType="touchUpInside" id="cWu-m3-1YD"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SSO-2x-9Cw">
+                                                        <rect key="frame" x="91.5" y="0.0" width="31" height="30"/>
+                                                        <fontDescription key="fontDescription" name="Arial-ItalicMT" family="Arial" pointSize="14"/>
+                                                        <state key="normal" title="I">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="setTextItalics:" destination="mF1-TU-4ib" eventType="touchUpInside" id="SgN-gr-rH4"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kf0-8v-fAj">
+                                                        <rect key="frame" x="137.5" y="0.0" width="30.5" height="30"/>
+                                                        <state key="normal">
+                                                            <attributedString key="attributedTitle">
+                                                                <fragment content="U">
+                                                                    <attributes>
+                                                                        <color key="NSColor" white="0.6621628852739726" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <font key="NSFont" size="14" name="Arial-BoldMT"/>
+                                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                        <integer key="NSUnderline" value="1"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                            </attributedString>
+                                                        </state>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w0v-U3-XW7">
-                                                <rect key="frame" x="0.0" y="222" width="168" height="31"/>
+                                                <rect key="frame" x="0.0" y="285" width="168" height="31"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
                                                 <state key="normal" title="Delete">
                                                     <color key="titleColor" red="0.90582191780821919" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="deleteTool:" destination="mF1-TU-4ib" eventType="touchUpInside" id="Ep4-sf-M45"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -197,7 +258,13 @@
                                     <constraint firstAttribute="width" constant="200" id="wd3-RM-One"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="boldLabel" destination="8NX-kh-Msu" id="7V4-N3-FfC"/>
+                                    <outlet property="fontBuffer" destination="Wri-x9-d8u" id="Lb1-R7-6Dz"/>
+                                    <outlet property="fontLabel" destination="w0D-0D-aQ4" id="kfC-Xf-YrS"/>
+                                    <outlet property="fontSizeInput" destination="xH8-Ce-8oU" id="xBQ-QG-7rT"/>
+                                    <outlet property="fontStack" destination="yeR-2z-CZ1" id="eJl-NH-p6s"/>
                                     <outlet property="heightInput" destination="a7n-bi-TJg" id="6e2-YU-AyM"/>
+                                    <outlet property="italicsLabel" destination="SSO-2x-9Cw" id="gdc-Ea-Rhr"/>
                                     <outlet property="title" destination="08H-hI-82s" id="UFA-Qz-aas"/>
                                     <outlet property="widthInput" destination="sGf-cL-nL7" id="7Px-MW-aNo"/>
                                     <outlet property="xInput" destination="N2A-Qq-38Q" id="SeZ-MG-C0l"/>

@@ -83,6 +83,12 @@ class CanvasViewController: UIViewController {
         print(authoringToolsView.selectedTool)
     }
     
+    func deleteSelectedTool(){
+        propertiesPane.isHidden = true
+        canvasUIElements.remove(at: canvasUIElements.firstIndex(of: selectedView!)! )
+        selectedView!.removeFromSuperview()
+    }
+    
 }
 
 
