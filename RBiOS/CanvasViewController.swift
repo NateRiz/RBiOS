@@ -11,7 +11,8 @@ import UIKit
 class CanvasViewController: UIViewController {
 
     @IBOutlet weak var navBar: UINavigationBar!
-    
+    @IBOutlet weak var propertiesPane: PropertiesPaneView!
+
     var canvasUIElements = [BIToolContainerView]()
     var selectedView: BIToolContainerView?
     var toolFactory: ToolFactory = ToolFactory()
@@ -19,7 +20,8 @@ class CanvasViewController: UIViewController {
     var rdlExporter = RDLExporter()
     let drawableCanvasView = DrawableCanvasView()
     var canvasBorderView = CanvasBorderView()
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         authoringToolsView = self.storyboard?.instantiateViewController(withIdentifier: "AuthoringToolsVC") as! AuthoringToolsViewController
@@ -32,6 +34,7 @@ class CanvasViewController: UIViewController {
         canvasBorderView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         canvasBorderView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         canvasBorderView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        view.bringSubviewToFront(propertiesPane)
     }
     
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
@@ -41,6 +44,7 @@ class CanvasViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         setSelectedTool(selectedView: nil)
+        propertiesPane.isHidden = true
     }
     
     func addSelectedToolToCanvas(tool: Tool, args: [Any]) {
@@ -53,6 +57,8 @@ class CanvasViewController: UIViewController {
     func setSelectedTool(selectedView: BIToolContainerView?){
         if let selectedUI = selectedView{
             self.selectedView = selectedUI
+            propertiesPane.setSelectedTool(selected: selectedUI)
+            propertiesPane.isHidden = false
         }
         
         for ui in canvasUIElements{
@@ -61,16 +67,7 @@ class CanvasViewController: UIViewController {
             }
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
     @IBAction func openAuthoringTools(_ sender: Any) {
         self.present(authoringToolsView, animated: true, completion: nil)
     }
@@ -78,7 +75,6 @@ class CanvasViewController: UIViewController {
     @IBAction func Export(_ sender: Any) {
         rdlExporter.generate(ui: canvasUIElements)
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -93,7 +89,6 @@ class CanvasViewController: UIViewController {
 
 /*
  TODO
- - dragging shouldnt allow bitools to go above toolbar
  - login
  - datasets
  - menu on select ( delete, font, size, etc)

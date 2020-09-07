@@ -10,6 +10,8 @@ import UIKit
 
 class BITextView: UITextView, BITool, UITextViewDelegate{
     
+    var name: String = "Label"
+    
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: nil)
         self.isScrollEnabled = false
@@ -27,6 +29,7 @@ class BITextView: UITextView, BITool, UITextViewDelegate{
         let newSize = sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
         frame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
         self.superview!.frame.size = frame.size
+        (self.parentViewController as! CanvasViewController).propertiesPane.updatePosition()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -44,6 +47,11 @@ class BITextView: UITextView, BITool, UITextViewDelegate{
         next?.touchesEnded(touches, with: event)
     }
     
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesCancelled(touches, with: event)
+        next?.touchesCancelled(touches, with: event)
+    }
+    
     override func addGestureRecognizer(_ gestureRecognizer: UIGestureRecognizer) {
         //Prevent long press to show the magnifying glass
         if gestureRecognizer is UILongPressGestureRecognizer {
@@ -51,7 +59,5 @@ class BITextView: UITextView, BITool, UITextViewDelegate{
         }
         super.addGestureRecognizer(gestureRecognizer)
     }
-    
-
 }
 

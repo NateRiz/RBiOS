@@ -16,10 +16,10 @@ enum TouchMode{
 }
 
 protocol BITool{
+    var name: String { get }
 }
 
 extension UIView {
-
     var parentViewController: UIViewController? {
         var parentResponder: UIResponder? = self
         while parentResponder != nil {

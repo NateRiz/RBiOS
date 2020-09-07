@@ -18,6 +18,8 @@ class CanvasBorderView: UIView {
     var horizontalLinePositions = [CGFloat]()
     var measurementLabels = [UILabel]()
     var drawableCanvasView: DrawableCanvasView?
+    static let canvasOffset:CGFloat = 20
+    
     
     init(canvas: DrawableCanvasView? = nil){
         super.init(frame: CGRect())
@@ -25,9 +27,9 @@ class CanvasBorderView: UIView {
         self.addSubview(dcv)
         drawableCanvasView = dcv
         drawableCanvasView!.translatesAutoresizingMaskIntoConstraints = false
-        drawableCanvasView!.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
+        drawableCanvasView!.topAnchor.constraint(equalTo: self.topAnchor, constant: CanvasBorderView.canvasOffset).isActive = true
         drawableCanvasView!.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        drawableCanvasView!.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
+        drawableCanvasView!.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: CanvasBorderView.canvasOffset).isActive = true
         drawableCanvasView!.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         drawableCanvasView!.layer.borderWidth = 1
         drawableCanvasView!.layer.borderColor = UIColor.lightGray.cgColor
@@ -58,7 +60,7 @@ class CanvasBorderView: UIView {
         var ticksPerScreen =  floor(UIScreen.main.bounds.size.width / pixelsPerTick)
         
         for itr in stride(from: 1.0, to: ticksPerScreen, by: 1.0){
-            let x = itr * pixelsPerTick
+            let x = itr * pixelsPerTick + CanvasBorderView.canvasOffset
             var height:CGFloat = 8
             if Int(itr) % 4 == 0{
                 height = 16
@@ -67,14 +69,14 @@ class CanvasBorderView: UIView {
             else if Int(itr) % 2 == 0{
                 height = 12
             }
-            context.move(to: CGPoint(x: x, y: 0))
+            context.move(to: CGPoint(x: x , y: 0))
             context.addLine(to: CGPoint(x: x, y: height))
         }
         
         ticksPerScreen =  floor(UIScreen.main.bounds.size.height / pixelsPerTick)
         
         for itr in stride(from: 1.0, to: ticksPerScreen, by: 1.0){
-            let y = itr * pixelsPerTick
+            let y = itr * pixelsPerTick + CanvasBorderView.canvasOffset
             var width:CGFloat = 8
             if Int(itr) % 4 == 0{
                 width = 16
@@ -118,5 +120,4 @@ class CanvasBorderView: UIView {
             measurementLabels.append(label)
         }
     }
-    
 }

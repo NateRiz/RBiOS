@@ -43,10 +43,8 @@ class RDLExporter: NSObject {
     }
     
     func _writeBIImageView(view: BIToolContainerView, idx: Int) {
-        let left = view.frame.origin.x / UIScreen.pointsPerInch!
-        let top = view.frame.origin.y / UIScreen.pointsPerInch!
-        let width = view.frame.width / UIScreen.pointsPerInch!
-        let height = view.frame.height / UIScreen.pointsPerInch!
+        let (left, top) = view.getCanvasPositon()
+        let (width, height) = view.getCanvasSize()
         rdl.append(contentsOf:
             """
             <Image Name="Image\(idx)">
@@ -112,10 +110,8 @@ class RDLExporter: NSObject {
         <Paragraphs>\n
         """)
         let biTextView = view.childView as! BITextView
-        let left = view.frame.origin.x / UIScreen.pointsPerInch!
-        let top = view.frame.origin.y / UIScreen.pointsPerInch!
-        let width = view.frame.width / UIScreen.pointsPerInch!
-        let height = view.frame.height / UIScreen.pointsPerInch!
+        let (left, top) = view.getCanvasPositon()
+        let (width, height) = view.getCanvasSize()
         let lines = biTextView.text.components(separatedBy: "\n")
         for line in lines { _writeBITextViewSingleLine(str: line)}
         rdl.append(contentsOf:

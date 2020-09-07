@@ -10,7 +10,7 @@ import UIKit
 
 class BIImageView: UIImageView, BITool {
 
-
+    var name: String = "Image"
     
     override init(image: UIImage?) {
         super.init(image: image)
@@ -18,7 +18,6 @@ class BIImageView: UIImageView, BITool {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    
+    }    
 }
+

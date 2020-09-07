@@ -85,10 +85,133 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mF1-TU-4ib" customClass="PropertiesPaneView" customModule="RBiOS" customModuleProvider="target">
+                                <rect key="frame" x="1166" y="74" width="200" height="950"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FEx-cz-eRq">
+                                        <rect key="frame" x="16" y="16" width="168" height="253"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="{Type} Properties" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08H-hI-82s">
+                                                <rect key="frame" x="0.0" y="0.0" width="168" height="16"/>
+                                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EqK-kh-8FC" userLabel="Buffer">
+                                                <rect key="frame" x="0.0" y="16" width="168" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="22N-WU-NSF" userLabel="Buffer">
+                                                <rect key="frame" x="0.0" y="33" width="168" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uw0-r4-z1n">
+                                                <rect key="frame" x="0.0" y="50" width="168" height="16"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="VwP-rQ-V3G">
+                                                <rect key="frame" x="0.0" y="66" width="168" height="30"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="N2A-Qq-38Q" userLabel="X">
+                                                        <rect key="frame" x="0.0" y="0.0" width="79.5" height="30"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="PeJ-Ed-cn7" userLabel="Y">
+                                                        <rect key="frame" x="88.5" y="0.0" width="79.5" height="30"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hm-jU-nHC" userLabel="Buffer">
+                                                <rect key="frame" x="0.0" y="96" width="168" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Z-Index" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ipd-A2-eSm" userLabel="Z-Index">
+                                                <rect key="frame" x="0.0" y="113" width="168" height="16"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="2ES-Vr-oQk" userLabel="Z">
+                                                <rect key="frame" x="0.0" y="129" width="168" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rCd-Vj-hSP" userLabel="Buffer">
+                                                <rect key="frame" x="0.0" y="159" width="168" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZg-Gg-mh7">
+                                                <rect key="frame" x="0.0" y="176" width="168" height="16"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="iz5-sf-gzl">
+                                                <rect key="frame" x="0.0" y="192" width="168" height="30"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="sGf-cL-nL7" userLabel="Width">
+                                                        <rect key="frame" x="0.0" y="0.0" width="79.5" height="30"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="a7n-bi-TJg" userLabel="Height">
+                                                        <rect key="frame" x="88.5" y="0.0" width="79.5" height="30"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w0v-U3-XW7">
+                                                <rect key="frame" x="0.0" y="222" width="168" height="31"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
+                                                <state key="normal" title="Delete">
+                                                    <color key="titleColor" red="0.90582191780821919" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="FEx-cz-eRq" firstAttribute="leading" secondItem="mF1-TU-4ib" secondAttribute="leading" constant="16" id="996-6m-MCA"/>
+                                    <constraint firstItem="FEx-cz-eRq" firstAttribute="top" secondItem="mF1-TU-4ib" secondAttribute="top" constant="16" id="BcR-Dk-4Vh"/>
+                                    <constraint firstAttribute="trailing" secondItem="FEx-cz-eRq" secondAttribute="trailing" constant="16" id="eZd-v0-XpR"/>
+                                    <constraint firstAttribute="width" constant="200" id="wd3-RM-One"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="heightInput" destination="a7n-bi-TJg" id="6e2-YU-AyM"/>
+                                    <outlet property="title" destination="08H-hI-82s" id="UFA-Qz-aas"/>
+                                    <outlet property="widthInput" destination="sGf-cL-nL7" id="7Px-MW-aNo"/>
+                                    <outlet property="xInput" destination="N2A-Qq-38Q" id="SeZ-MG-C0l"/>
+                                    <outlet property="yInput" destination="PeJ-Ed-cn7" id="FtD-fl-t1y"/>
+                                    <outlet property="zInput" destination="2ES-Vr-oQk" id="Q7T-rz-zjc"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="mF1-TU-4ib" firstAttribute="top" secondItem="E69-ea-wnX" secondAttribute="bottom" id="Avh-g0-jYT"/>
                             <constraint firstItem="E69-ea-wnX" firstAttribute="leading" secondItem="ynL-fz-yKX" secondAttribute="leading" id="CWA-dZ-Nza"/>
+                            <constraint firstItem="mF1-TU-4ib" firstAttribute="trailing" secondItem="ynL-fz-yKX" secondAttribute="trailing" id="GAa-pT-b2Z"/>
+                            <constraint firstAttribute="bottom" secondItem="mF1-TU-4ib" secondAttribute="bottom" id="JfA-sm-Kbv"/>
                             <constraint firstItem="E69-ea-wnX" firstAttribute="trailing" secondItem="ynL-fz-yKX" secondAttribute="trailing" id="dkQ-4X-b54"/>
                             <constraint firstItem="E69-ea-wnX" firstAttribute="top" secondItem="ynL-fz-yKX" secondAttribute="top" id="qyj-0R-iTy"/>
                         </constraints>
@@ -96,11 +219,12 @@
                     </view>
                     <connections>
                         <outlet property="navBar" destination="E69-ea-wnX" id="wwF-LP-1Ee"/>
+                        <outlet property="propertiesPane" destination="mF1-TU-4ib" id="KIo-Ge-jaZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1F5-Nz-mgl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="754" y="17"/>
+            <point key="canvasLocation" x="753.73352855051235" y="16.9921875"/>
         </scene>
         <!--Authoring Tools View Controller-->
         <scene sceneID="38k-Ym-co5">
