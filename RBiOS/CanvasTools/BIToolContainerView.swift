@@ -71,9 +71,8 @@ class BIToolContainerView: UIView {
             let location = touch?.location(in: self.superview);
             if(location != nil)
             {
-                let clampedX = min(max(0, location!.x - offsetX), self.superview!.bounds.size.width - self.frame.size.width)
-                let clampedY = min(max(0, location!.y - offsetY), self.superview!.bounds.size.height - self.frame.size.height)
-                self.frame.origin = CGPoint(x: clampedX, y: clampedY);
+                setX(x: location!.x - offsetX)
+                setY(y: location!.y - offsetY)
             }
         }
         else if self.touchMode == .HRESIZE{
@@ -133,5 +132,32 @@ class BIToolContainerView: UIView {
     func getCanvasSize() -> (CGFloat, CGFloat) {
         return (self.frame.width / UIScreen.pointsPerInch!, self.frame.height / UIScreen.pointsPerInch!)
     }
-
+    
+    func setX(x: CGFloat){
+        guard let _ = self.superview else {return}
+        self.frame.origin.x = clamp(val: x, min: 0, max: self.superview!.bounds.size.width - self.frame.size.width)
+    }
+    
+    func setY(y: CGFloat){
+        guard let _ = self.superview else {return}
+        self.frame.origin.y = clamp(val: y, min: 0, max: self.superview!.bounds.size.height - self.frame.size.height)
+    }
+    
+    func setWidth(w: CGFloat){
+        guard let _ = self.superview else {return}
+        self.frame.size.width = clamp(val: w, min: 16, max: self.superview!.bounds.size.width)
+        self.childView!.frame.size.width = self.frame.size.width
+        if self.frame.maxX > self.superview!.bounds.size.width{
+            setX(x: self.superview!.bounds.size.width - self.frame.size.width)
+        }
+    }
+    
+    func setHeight(h: CGFloat){
+        guard let _ = self.superview else {return}
+        self.frame.size.height = clamp(val: h, min: 16, max: self.superview!.bounds.size.height)
+        self.childView!.frame.size.height = self.frame.size.height
+        if self.frame.maxY > self.superview!.bounds.size.height{
+            setY(y: self.superview!.bounds.size.height - self.frame.size.height)
+        }
+    }
 }
