@@ -134,7 +134,6 @@ class CanvasViewController: UIViewController {
         snapHorizontalLine.isHidden = true
         
         if let ui = snappedVertical{
-            print(selected.frame, ui.frame, vSnapLeft, selected.frame.minX, max(selected.frame.midY, ui.frame.midY), abs(ui.frame.midY-selected.frame.midY))
             snapVerticalLine.isHidden = false
             let x = CanvasBorderView.canvasOffset + (vSnapLeft ? selected.frame.minX : selected.frame.maxX)
             let y = CanvasBorderView.canvasOffset * 2 + navBar.frame.height + min(selected.frame.midY, ui.frame.midY)

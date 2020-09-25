@@ -100,7 +100,7 @@ class RDLExporter: NSObject {
     }
     
     func _writeBITextView(view: BIToolContainerView, idx: Int) {
-        let buffer:CGFloat = 0.15
+        let buffer:CGFloat = view.frame.width * 0.25
         rdl.append(contentsOf:
         """
         <Textbox Name=\"Textbox\(idx)\">
@@ -113,7 +113,7 @@ class RDLExporter: NSObject {
         let (left, top) = view.getCanvasPositon()
         let (width, height) = view.getCanvasSize()
         let lines = biTextView.text.components(separatedBy: "\n")
-        for line in lines { _writeBITextViewSingleLine(str: line)}
+        for line in lines { _writeBITextViewSingleLine(str: line, view: biTextView)}
         rdl.append(contentsOf:
         """
         </Paragraphs>
@@ -136,20 +136,31 @@ class RDLExporter: NSObject {
         )
     }
     
-    func _writeBITextViewSingleLine(str: String){
+    func _writeBITextViewSingleLine(str: String, view: BITextView){
         rdl.append(contentsOf:
         """
         <Paragraph>
         <TextRuns>
         <TextRun>
-        <Value>\((str == "" ? " " : str))</Value>
-        <Style />
+        <Value>\((str == "" ? " " : str))</Value>\n
+        """)
+        let isItalic = view.font!.fontDescriptor.symbolicTraits.contains(.traitItalic)
+        let isBold = view.font!.fontDescriptor.symbolicTraits.contains(.traitBold)
+        rdl.append(contentsOf:
+            """
+            <Style>
+            \(isItalic ? "<FontStyle>Italic</FontStyle>" : "")
+            <FontSize>\(Int(view.font!.pointSize))pt</FontSize>
+            \(isBold ? "<FontWeight>Bold</FontWeight>" : "")
+            </Style>\n
+            """)
+        rdl.append(contentsOf:
+        """
         </TextRun>
         </TextRuns>
         <Style />
         </Paragraph>\n
-        """
-        )
+        """)
     }
     
     
