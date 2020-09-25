@@ -13,15 +13,18 @@ import UIScreenExtension
 // Contains main canvas
 
 class CanvasBorderView: UIView {
-
+    
+    static let canvasOffset:CGFloat = 20
+    
     var verticalLinePositions = [CGFloat]()
     var horizontalLinePositions = [CGFloat]()
     var measurementLabels = [UILabel]()
-    var drawableCanvasView: DrawableCanvasView?
-    static let canvasOffset:CGFloat = 20
+    var drawableCanvasView: UIView?
+    let horizontalLine = LineView(frame: CGRect(x: 0, y: 0, width: 20, height: LineView.lineWidth), isVertical: true, color: LineView.systemBlue)
+    let verticalLine = LineView(frame: CGRect(x: 0, y: 0, width: LineView.lineWidth, height: 20), isVertical: false, color: LineView.systemBlue)
+
     
-    
-    init(canvas: DrawableCanvasView? = nil){
+    init(canvas: UIView? = nil){
         super.init(frame: CGRect())
         guard let dcv = canvas else {return}
         self.addSubview(dcv)
@@ -33,6 +36,10 @@ class CanvasBorderView: UIView {
         drawableCanvasView!.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         drawableCanvasView!.layer.borderWidth = 1
         drawableCanvasView!.layer.borderColor = UIColor.lightGray.cgColor
+        self.addSubview(horizontalLine)
+        self.addSubview(verticalLine)
+        self.bringSubviewToFront(horizontalLine)
+        self.bringSubviewToFront(verticalLine)
         self.backgroundColor = .white
     }
     
@@ -119,5 +126,10 @@ class CanvasBorderView: UIView {
             addSubview(label)
             measurementLabels.append(label)
         }
+    }
+    
+    func updateToolPosition(x: CGFloat, y: CGFloat){
+        self.horizontalLine.frame.origin.y = y + CanvasBorderView.canvasOffset
+        self.verticalLine.frame.origin.x = x + CanvasBorderView.canvasOffset
     }
 }

@@ -99,8 +99,9 @@ class BIToolContainerView: UIView {
             self.initialTouchDistance = touchDistance
         }
         
-        (self.parentViewController as! CanvasViewController).propertiesPane.updatePosition()
-        
+        let parentVC = (self.parentViewController as! CanvasViewController)
+        parentVC.updateToolPosition()
+        parentVC.propertiesPane.updatePosition()
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?){
@@ -125,10 +126,12 @@ class BIToolContainerView: UIView {
         self.layer.borderWidth = 0
     }
     
+    // Get relative position in view.
     func getCanvasPositon() -> (CGFloat, CGFloat) {
         return (self.frame.minX / UIScreen.pointsPerInch!, self.frame.minY / UIScreen.pointsPerInch!)
     }
     
+    // Get relative size in view
     func getCanvasSize() -> (CGFloat, CGFloat) {
         return (self.frame.width / UIScreen.pointsPerInch!, self.frame.height / UIScreen.pointsPerInch!)
     }

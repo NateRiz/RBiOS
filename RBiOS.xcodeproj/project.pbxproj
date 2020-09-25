@@ -14,8 +14,8 @@
 		EC5CF81224E9306B0017353B /* RDLExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5CF81124E9306B0017353B /* RDLExporter.swift */; };
 		EC5CF81424EBC0680017353B /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = EC5CF81324EBC0680017353B /* Podfile */; };
 		EC5CF81624EBC7CB0017353B /* CanvasBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5CF81524EBC7CB0017353B /* CanvasBorderView.swift */; };
-		EC5CF81824F1FCCB0017353B /* DrawableCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5CF81724F1FCCB0017353B /* DrawableCanvasView.swift */; };
 		EC8379682505BCF900B8F2FC /* PropertiesPaneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8379672505BCF900B8F2FC /* PropertiesPaneView.swift */; };
+		EC85CE9F251D9A0A003A5717 /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC85CE9E251D9A0A003A5717 /* LineView.swift */; };
 		ECD16A1524DCF04F00490CF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD16A1424DCF04F00490CF7 /* AppDelegate.swift */; };
 		ECD16A1A24DCF04F00490CF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECD16A1824DCF04F00490CF7 /* Main.storyboard */; };
 		ECD16A1C24DCF05100490CF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECD16A1B24DCF05100490CF7 /* Assets.xcassets */; };
@@ -65,8 +65,8 @@
 		EC5CF81124E9306B0017353B /* RDLExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDLExporter.swift; sourceTree = "<group>"; };
 		EC5CF81324EBC0680017353B /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
 		EC5CF81524EBC7CB0017353B /* CanvasBorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasBorderView.swift; sourceTree = "<group>"; };
-		EC5CF81724F1FCCB0017353B /* DrawableCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawableCanvasView.swift; sourceTree = "<group>"; };
 		EC8379672505BCF900B8F2FC /* PropertiesPaneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesPaneView.swift; sourceTree = "<group>"; };
+		EC85CE9E251D9A0A003A5717 /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
 		ECD16A1124DCF04F00490CF7 /* RBiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RBiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECD16A1424DCF04F00490CF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECD16A1924DCF04F00490CF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -178,8 +178,8 @@
 				ECD16A6424E0F84000490CF7 /* ImagePickerViewController.swift */,
 				EC5CF81124E9306B0017353B /* RDLExporter.swift */,
 				EC5CF81524EBC7CB0017353B /* CanvasBorderView.swift */,
-				EC5CF81724F1FCCB0017353B /* DrawableCanvasView.swift */,
 				EC8379672505BCF900B8F2FC /* PropertiesPaneView.swift */,
+				EC85CE9E251D9A0A003A5717 /* LineView.swift */,
 			);
 			path = RBiOS;
 			sourceTree = "<group>";
@@ -477,8 +477,8 @@
 				ECD16A4E24DEFEFB00490CF7 /* CanvasViewController.swift in Sources */,
 				ECD16A5F24DF9D9900490CF7 /* BIToolCommonUtilities.swift in Sources */,
 				EC5CF81624EBC7CB0017353B /* CanvasBorderView.swift in Sources */,
+				EC85CE9F251D9A0A003A5717 /* LineView.swift in Sources */,
 				EC8379682505BCF900B8F2FC /* PropertiesPaneView.swift in Sources */,
-				EC5CF81824F1FCCB0017353B /* DrawableCanvasView.swift in Sources */,
 				EC5CF80C24E72CDA0017353B /* BIToolContainerView.swift in Sources */,
 				ECD16A5024DF257F00490CF7 /* AuthoringToolsViewController.swift in Sources */,
 				ECD16A5224DF330E00490CF7 /* ToolFactory.swift in Sources */,
