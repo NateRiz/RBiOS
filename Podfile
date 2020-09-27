@@ -6,6 +6,7 @@ target 'RBiOS' do
   use_frameworks!
 
   pod 'UIScreenExtension', :git => 'https://github.com/marchv/UIScreenExtension'
+  pod 'Alamofire'
 
   target 'RBiOSTests' do
     inherit! :search_paths

@@ -1,8 +1,14 @@
 PODS:
+  - Alamofire (5.2.2)
   - UIScreenExtension (0.0.7)
 
 DEPENDENCIES:
+  - Alamofire
   - UIScreenExtension (from `https://github.com/marchv/UIScreenExtension`)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
 
 EXTERNAL SOURCES:
   UIScreenExtension:
@@ -14,8 +20,9 @@ CHECKOUT OPTIONS:
     :git: https://github.com/marchv/UIScreenExtension
 
 SPEC CHECKSUMS:
+  Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
   UIScreenExtension: d96b7ab20679afe53992ea07aeea84774cd4a116
 
-PODFILE CHECKSUM: 90e19b765c6bdca93ede063c95c2190b291499cc
+PODFILE CHECKSUM: 9346c7e324e840c204338f66f3e8f07d8fa7f3e0
 
 COCOAPODS: 1.9.3

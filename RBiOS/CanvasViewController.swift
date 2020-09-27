@@ -11,13 +11,14 @@ import UIKit
 class CanvasViewController: UIViewController {
 
     @IBOutlet weak var navBar: UINavigationBar!
+    @IBOutlet weak var groupSearchView: UIView!
     @IBOutlet weak var propertiesPane: PropertiesPaneView!
 
     var canvasUIElements = [BIToolContainerView]()
     var selectedView: BIToolContainerView?
     var toolFactory: ToolFactory = ToolFactory()
     var authoringToolsView = AuthoringToolsViewController()
-    var rdlExporter = RDLExporter()
+    var rdlPublisher = RDLPublisher()
     let drawableCanvasView = UIView()
     var canvasBorderView = CanvasBorderView()
     let snapVerticalLine = LineView(frame: CGRect(x: 0, y: 0, width: 1, height: UIScreen.main.bounds.size.height), isVertical: true)
@@ -41,6 +42,7 @@ class CanvasViewController: UIViewController {
         self.view.addSubview(snapHorizontalLine)
         self.view.bringSubviewToFront(snapVerticalLine)
         self.view.bringSubviewToFront(snapHorizontalLine)
+        self.view.bringSubviewToFront(self.groupSearchView)
     }
     
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
@@ -79,7 +81,8 @@ class CanvasViewController: UIViewController {
     }
     
     @IBAction func Export(_ sender: Any) {
-        rdlExporter.generate(ui: canvasUIElements)
+        self.groupSearchView.isHidden = false
+        //rdlPublisher.publish(ui: canvasUIElements)
     }
     
     override func viewWillAppear(_ animated: Bool) {
