@@ -14,7 +14,7 @@
 		EC5CF81224E9306B0017353B /* RDLExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5CF81124E9306B0017353B /* RDLExporter.swift */; };
 		EC5CF81424EBC0680017353B /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = EC5CF81324EBC0680017353B /* Podfile */; };
 		EC5CF81624EBC7CB0017353B /* CanvasBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5CF81524EBC7CB0017353B /* CanvasBorderView.swift */; };
-		EC7B0DA12521314A00BE1D06 /* GroupSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7B0DA02521314A00BE1D06 /* GroupSearchView.swift */; };
+		EC7B0DA12521314A00BE1D06 /* PublishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7B0DA02521314A00BE1D06 /* PublishView.swift */; };
 		EC7CB7342520164600052F32 /* BITextViewExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7CB7332520164600052F32 /* BITextViewExporter.swift */; };
 		EC7CB736252019E900052F32 /* BIImageViewExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7CB735252019E900052F32 /* BIImageViewExporter.swift */; };
 		EC7CB738252021D200052F32 /* RDLPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7CB737252021D200052F32 /* RDLPublisher.swift */; };
@@ -69,7 +69,7 @@
 		EC5CF81124E9306B0017353B /* RDLExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDLExporter.swift; sourceTree = "<group>"; };
 		EC5CF81324EBC0680017353B /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
 		EC5CF81524EBC7CB0017353B /* CanvasBorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasBorderView.swift; sourceTree = "<group>"; };
-		EC7B0DA02521314A00BE1D06 /* GroupSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSearchView.swift; sourceTree = "<group>"; };
+		EC7B0DA02521314A00BE1D06 /* PublishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishView.swift; sourceTree = "<group>"; };
 		EC7CB7332520164600052F32 /* BITextViewExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BITextViewExporter.swift; sourceTree = "<group>"; };
 		EC7CB735252019E900052F32 /* BIImageViewExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BIImageViewExporter.swift; sourceTree = "<group>"; };
 		EC7CB737252021D200052F32 /* RDLPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDLPublisher.swift; sourceTree = "<group>"; };
@@ -151,6 +151,7 @@
 		EC7CB732252015C200052F32 /* Exporter */ = {
 			isa = PBXGroup;
 			children = (
+				EC7B0DA02521314A00BE1D06 /* PublishView.swift */,
 				EC5CF81124E9306B0017353B /* RDLExporter.swift */,
 				EC7CB7332520164600052F32 /* BITextViewExporter.swift */,
 				EC7CB735252019E900052F32 /* BIImageViewExporter.swift */,
@@ -199,7 +200,6 @@
 				EC5CF81524EBC7CB0017353B /* CanvasBorderView.swift */,
 				EC8379672505BCF900B8F2FC /* PropertiesPaneView.swift */,
 				EC85CE9E251D9A0A003A5717 /* LineView.swift */,
-				EC7B0DA02521314A00BE1D06 /* GroupSearchView.swift */,
 			);
 			path = RBiOS;
 			sourceTree = "<group>";
@@ -498,7 +498,7 @@
 				ECD16A5F24DF9D9900490CF7 /* BIToolCommonUtilities.swift in Sources */,
 				EC5CF81624EBC7CB0017353B /* CanvasBorderView.swift in Sources */,
 				EC85CE9F251D9A0A003A5717 /* LineView.swift in Sources */,
-				EC7B0DA12521314A00BE1D06 /* GroupSearchView.swift in Sources */,
+				EC7B0DA12521314A00BE1D06 /* PublishView.swift in Sources */,
 				EC8379682505BCF900B8F2FC /* PropertiesPaneView.swift in Sources */,
 				EC5CF80C24E72CDA0017353B /* BIToolContainerView.swift in Sources */,
 				ECD16A5024DF257F00490CF7 /* AuthoringToolsViewController.swift in Sources */,

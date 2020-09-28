@@ -47,7 +47,6 @@ class AuthoringToolsViewController: UIViewController {
         self.present(vc, animated: true, completion: nil)
     }
     
-    
     func resetSelectedTool() {
         selectedTool = Tool.NONE
     }

@@ -10,16 +10,14 @@ import UIKit
 
 class BIImageViewExporter: NSObject {
 
-    var rdl = ""
     
-    func write(views: [BIToolContainerView], rdl: String){
-        self.rdl = rdl
+    func write(views: [BIToolContainerView], rdl: inout String){
         for (i, elem) in views.enumerated() {
-            _writeBIImageView(view: elem, idx: i)
+            _writeBIImageView(rdl: &rdl, view: elem, idx: i)
         }
     }
     
-    func _writeBIImageView(view: BIToolContainerView, idx: Int) {
+    func _writeBIImageView(rdl: inout String, view: BIToolContainerView, idx: Int) {
         let (left, top) = view.getCanvasPositon()
         let (width, height) = view.getCanvasSize()
         rdl.append(contentsOf:
@@ -42,8 +40,7 @@ class BIImageViewExporter: NSObject {
             """)
     }
     
-    func embed(views: [BIToolContainerView], rdl: String){
-        self.rdl = rdl
+    func embed(views: [BIToolContainerView], rdl: inout String){
         var doesReportContainImages = false
         for elem in views {
             if elem.childView is BIImageView{
@@ -54,16 +51,16 @@ class BIImageViewExporter: NSObject {
         
         if (!doesReportContainImages) { return }
         
-        self.rdl.append(contentsOf: "<EmbeddedImages>\n")
+        rdl.append(contentsOf: "<EmbeddedImages>\n")
         for (i, elem) in views.enumerated(){
-            if elem.childView is BIImageView{ _embedBIImageViewHelper(view: elem, idx: i)}
+            if elem.childView is BIImageView{ _embedBIImageViewHelper(rdl: &rdl, view: elem, idx: i)}
         }
-        self.rdl.append(contentsOf: "</EmbeddedImages>\n")
+        rdl.append(contentsOf: "</EmbeddedImages>\n")
         
     }
     
     
-    func _embedBIImageViewHelper(view: BIToolContainerView, idx: Int) {
+    func _embedBIImageViewHelper(rdl: inout String, view: BIToolContainerView, idx: Int) {
         let biImageView = view.childView as! BIImageView
         let imageData:Data = biImageView.image!.pngData()!
         let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)

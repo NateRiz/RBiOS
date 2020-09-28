@@ -10,16 +10,14 @@ import UIKit
 
 class BITextViewExporter: NSObject {
     
-    var rdl = ""
     
-    func write(views: [BIToolContainerView], rdl: String){
-        self.rdl = rdl
+    func write(views: [BIToolContainerView], rdl: inout String){
         for (i, elem) in views.enumerated() {
-            _writeBITextView(view: elem, idx: i)
+            _writeBITextView(rdl: &rdl, view: elem, idx: i)
         }
     }
     
-    func _writeBITextView(view: BIToolContainerView, idx: Int) {
+    func _writeBITextView(rdl: inout String, view: BIToolContainerView, idx: Int) {
         let buffer:CGFloat = view.frame.width * 0.25
         let biTextView = view.childView as! BITextView
         let (left, top) = view.getCanvasPositon()
@@ -34,7 +32,7 @@ class BITextViewExporter: NSObject {
             <KeepTogether>true</KeepTogether>
             <Paragraphs>\n
             """)
-        for line in lines { _writeBITextViewSingleLine(str: line, view: biTextView)}
+        for line in lines { _writeBITextViewSingleLine(rdl: &rdl, str: line, view: biTextView)}
         rdl.append(contentsOf:
             """
             </Paragraphs>
@@ -56,7 +54,7 @@ class BITextViewExporter: NSObject {
             """)
     }
     
-    func _writeBITextViewSingleLine(str: String, view: BITextView){
+    func _writeBITextViewSingleLine(rdl: inout String, str: String, view: BITextView){
         rdl.append(contentsOf:
             """
             <Paragraph>

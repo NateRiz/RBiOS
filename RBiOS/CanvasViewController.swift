@@ -11,14 +11,13 @@ import UIKit
 class CanvasViewController: UIViewController {
 
     @IBOutlet weak var navBar: UINavigationBar!
-    @IBOutlet weak var groupSearchView: UIView!
+    @IBOutlet weak var publishView: PublishView!
     @IBOutlet weak var propertiesPane: PropertiesPaneView!
 
     var canvasUIElements = [BIToolContainerView]()
     var selectedView: BIToolContainerView?
     var toolFactory: ToolFactory = ToolFactory()
     var authoringToolsView = AuthoringToolsViewController()
-    var rdlPublisher = RDLPublisher()
     let drawableCanvasView = UIView()
     var canvasBorderView = CanvasBorderView()
     let snapVerticalLine = LineView(frame: CGRect(x: 0, y: 0, width: 1, height: UIScreen.main.bounds.size.height), isVertical: true)
@@ -29,6 +28,7 @@ class CanvasViewController: UIViewController {
         super.viewDidLoad()
         authoringToolsView = self.storyboard?.instantiateViewController(withIdentifier: "AuthoringToolsVC") as! AuthoringToolsViewController
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        tapGesture.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tapGesture)
         self.canvasBorderView = CanvasBorderView(canvas: drawableCanvasView)
         self.view.addSubview(canvasBorderView)
@@ -42,7 +42,7 @@ class CanvasViewController: UIViewController {
         self.view.addSubview(snapHorizontalLine)
         self.view.bringSubviewToFront(snapVerticalLine)
         self.view.bringSubviewToFront(snapHorizontalLine)
-        self.view.bringSubviewToFront(self.groupSearchView)
+        self.view.bringSubviewToFront(self.publishView)
     }
     
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
@@ -51,6 +51,7 @@ class CanvasViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
+        next?.touchesBegan(touches, with: event)
         setSelectedTool(selectedView: nil)
         propertiesPane.isHidden = true
     }
@@ -77,16 +78,17 @@ class CanvasViewController: UIViewController {
     }
     
     @IBAction func openAuthoringTools(_ sender: Any) {
-        self.present(authoringToolsView, animated: true, completion: nil)
+        let navigationController: UINavigationController = UINavigationController(rootViewController: authoringToolsView)
+        navigationController.modalPresentationStyle = .fullScreen
+        self.present(navigationController, animated: true, completion: nil)
     }
     
     @IBAction func Export(_ sender: Any) {
-        self.groupSearchView.isHidden = false
-        //rdlPublisher.publish(ui: canvasUIElements)
+        self.publishView.isHidden = false
+        self.publishView.publish(ui: canvasUIElements)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         self.addSelectedToolToCanvas(tool: authoringToolsView.selectedTool, args: authoringToolsView.args)
         authoringToolsView.resetSelectedTool()
         print(authoringToolsView.selectedTool)
@@ -155,7 +157,7 @@ class CanvasViewController: UIViewController {
 
 /*
  TODO
- - login
+ - login .. cant do because of mfa
  - datasets
  - menu on select ( delete, font, size, etc)
  - export rdl to file

@@ -21,6 +21,7 @@ class RDLExporter: NSObject {
     
     func generate(ui: [BIToolContainerView]) {
         rdl = ""
+        self.ui = ui
         _writeHeader()
         _writeBody()
         _writeFooter()
@@ -33,13 +34,13 @@ class RDLExporter: NSObject {
     
     func _writeFooter() {
         rdl.append(contentsOf: footer1)
-        imageViewExporter.embed(views: self.ui.filter{$0.childView is BIImageView}, rdl: self.rdl)
+        imageViewExporter.embed(views: self.ui.filter{$0.childView is BIImageView}, rdl: &self.rdl)
         rdl.append(contentsOf: footer2)
     }
     
     func _writeBody() {
-        textViewExporter.write(views: self.ui.filter{$0.childView is BITextView}, rdl: self.rdl)
-        imageViewExporter.write(views: self.ui.filter{$0.childView is BIImageView}, rdl: self.rdl)
+        textViewExporter.write(views: self.ui.filter{$0.childView is BITextView}, rdl: &self.rdl)
+        imageViewExporter.write(views: self.ui.filter{$0.childView is BIImageView}, rdl: &self.rdl)
     }
     
     
