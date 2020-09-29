@@ -14,7 +14,7 @@ enum Tool {
     case IMAGE
 }
 
-class AuthoringToolsViewController: UIViewController {
+class AuthoringToolsViewController: UIViewController{
 
     var selectedTool: Tool = Tool.NONE
     var args = [Any]()
@@ -53,5 +53,8 @@ class AuthoringToolsViewController: UIViewController {
     
     func closeView(){
         self.dismiss(animated: true, completion: nil)
+    }
+    @IBAction func back(_ sender: Any) {
+        closeView()
     }
 }

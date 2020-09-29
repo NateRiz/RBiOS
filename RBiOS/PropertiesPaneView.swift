@@ -52,6 +52,7 @@ class PropertiesPaneView: UIView, UITextFieldDelegate{
         fontBuffer.isHidden = true
         fontLabel.isHidden = true
         fontStack.isHidden = true
+        updatePosition()
     }
     
     func updatePosition(){
