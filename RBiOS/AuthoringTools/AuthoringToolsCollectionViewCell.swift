@@ -10,4 +10,7 @@ import UIKit
 
 class AuthoringToolsCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var icon: UIImageView!
+    @IBOutlet weak var label: UILabel!
+    
 }

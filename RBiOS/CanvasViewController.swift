@@ -84,6 +84,7 @@ class CanvasViewController: UIViewController {
     }
     
     @IBAction func Export(_ sender: Any) {
+        self.disableCanvas()
         self.publishView.isHidden = false
         self.publishView.publish(ui: canvasUIElements)
     }
@@ -151,6 +152,16 @@ class CanvasViewController: UIViewController {
             snapHorizontalLine.frame = CGRect(x: x, y: y, width: abs(ui.frame.midX-selected.frame.midX), height: 1)
         }
     }
+    
+    func disableCanvas(){
+        self.navBar.isUserInteractionEnabled = false
+        self.drawableCanvasView.isUserInteractionEnabled = false
+    }
+    
+    func enableCanvas(){
+        self.navBar.isUserInteractionEnabled = true
+        self.drawableCanvasView.isUserInteractionEnabled = true
+    }
 }
 
 
@@ -159,8 +170,5 @@ class CanvasViewController: UIViewController {
  TODO
  - login .. cant do because of mfa
  - datasets
- - menu on select ( delete, font, size, etc)
- - export rdl to file
- - ruler grid lines
 */
 

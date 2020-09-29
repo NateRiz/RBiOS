@@ -14,33 +14,51 @@ enum Tool {
     case IMAGE
 }
 
-class AuthoringToolsViewController: UIViewController{
-
+class AuthoringToolsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    var cells = [String: () -> Void]()
     var selectedTool: Tool = Tool.NONE
     var args = [Any]()
+    var toolNames = ["Text Box", "Image"]
+    var imageMap = ["Text Box":"textbox", "Image":"photo"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        args.removeAll()
-        // Do any additional setup after loading the view.
+        cells["Text Box"] = _selectToolBox
+        cells["Image"] = _selectImage
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        args.removeAll()
     }
-    */
-    @IBAction func selectToolBox(_ sender: Any) {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return toolNames.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AuthoringToolCell", for: indexPath as IndexPath) as! AuthoringToolsCollectionViewCell
+        
+        let name = self.toolNames[indexPath.row]
+        cell.label.text = name
+        if #available(iOS 13.0, *) { cell.icon.image = UIImage(systemName: imageMap[name]!)}
+        else { /* Fallback on earlier versions */ }
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        cells[toolNames[indexPath.row]]!()
+    }
+    
+    
+    func _selectToolBox(){
         selectedTool = Tool.TEXTBOX
         closeView()
     }
     
-    @IBAction func selectImage(_ sender: Any) {
+    func _selectImage() {
         selectedTool = Tool.IMAGE
         let vc = ImagePickerViewController()
         vc.setParent(parentView: self)

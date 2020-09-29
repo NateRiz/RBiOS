@@ -122,6 +122,9 @@ class PublishView: UIView, UISearchBarDelegate, UITableViewDelegate, UITableView
         self.tableView.isHidden = false
         self.searchBar.isHidden = false
         self.nextButton.isEnabled = false
+        self.reportNameLabel.text = ""
+        (self.parentViewController as! CanvasViewController).enableCanvas()
+        
     }
     
 }

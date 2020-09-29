@@ -36,7 +36,6 @@ class ImagePickerViewController: UIImagePickerController, UINavigationController
         print("Uploading image to PBI: ", image!.size)
         
         self.parentView!.args.append(image as Any)
-        print("Dis")
         self.dismiss(animated: true, completion: {
             self.parentView!.closeView()
         })
