@@ -22,6 +22,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1366" height="50"/>
                                 <items>
                                     <navigationItem title="Editor" id="giW-4F-npj">
+                                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="compose" id="XSP-s7-FjR">
+                                            <connections>
+                                                <action selector="new:" destination="hDk-O6-TIE" id="lyz-Bk-Wcd"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <rightBarButtonItems>
                                             <barButtonItem systemItem="add" id="a45-bO-ADj">
                                                 <connections>

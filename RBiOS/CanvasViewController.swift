@@ -96,9 +96,18 @@ class CanvasViewController: UIViewController {
     }
     
     func deleteSelectedTool(){
-        propertiesPane.isHidden = true
-        canvasUIElements.remove(at: canvasUIElements.firstIndex(of: selectedView!)! )
-        selectedView!.removeFromSuperview()
+        deleteTool(tool: self.selectedView)
+    }
+    
+    func deleteTool(tool: BIToolContainerView?){
+        guard let tool = tool else {return}
+        if let idx = canvasUIElements.firstIndex(of: tool){
+            if canvasUIElements[idx] == self.selectedView {
+                propertiesPane.isHidden = true
+            }
+            canvasUIElements.remove(at: idx)
+        }
+        tool.removeFromSuperview()
     }
     
     func updateToolPosition(){
@@ -162,13 +171,17 @@ class CanvasViewController: UIViewController {
         self.navBar.isUserInteractionEnabled = true
         self.drawableCanvasView.isUserInteractionEnabled = true
     }
+    
+    @IBAction func new(_ sender: Any) {
+        let alert = UIAlertController(title: "Create New Report?", message: "Everything not saved will be lost.", preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
+            self.setSelectedTool(selectedView: nil)
+            for ui in self.canvasUIElements { self.deleteTool(tool: ui) }
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
+
+    }
+    
 }
-
-
-
-/*
- TODO
- - login .. cant do because of mfa
- - datasets
-*/
-
